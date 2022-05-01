@@ -1,15 +1,30 @@
 <script lang="ts">
 	import LetterBox from './LetterBox.svelte';
-
-	const guess: string = 'sawyers';
+	import { guessHistory, answerKey } from '../../stores/stores';
+	import { checkGuess } from '$lib/functions/checkGuess';
 	export let row: number;
-
-	import { guessHistory } from '../../stores/stores';
+	let resultKey: string = '';
+	$: {
+		if ($guessHistory[row]?.complete) {
+			const guessKey = $guessHistory[row].guess;
+			const answer = $answerKey.answer;
+			if (guessKey) {
+				resultKey = checkGuess(guessKey, answer);
+				console.log(resultKey);
+			}
+		}
+	}
 </script>
 
 <div class="guess-row">
-	{#each guess as letter, column}
-		<LetterBox {column} {row} />
+	{#each $answerKey.answer as letter, column}
+		<LetterBox
+			{column}
+			{row}
+			correct={resultKey[column] === 'c'}
+			partial={resultKey[column] === 'p'}
+			incorrect={resultKey[column] === 'x'}
+		/>
 	{/each}
 </div>
 

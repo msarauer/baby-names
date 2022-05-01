@@ -5,6 +5,7 @@
 	let babyName: string = '';
 	const handleSubmit = () => {
 		answerKey.set(createAnswerKey(babyName));
+		console.log($answerKey);
 	};
 </script>
 

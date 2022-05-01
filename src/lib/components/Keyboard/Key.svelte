@@ -1,8 +1,21 @@
 <script lang="ts">
-	export let letter: string | any;
+	export let letter: string;
+	import { answerKey, guessHistory } from '../../stores/stores';
+
+	const handleClick = () => {
+		if (letter === 'enter') {
+			if ($answerKey.answer.length === $guessHistory.at(-1)?.guess.length) {
+				$guessHistory.at(-1).complete = true;
+				$guessHistory = [...$guessHistory, { guess: '', complete: false }];
+			}
+		} else {
+			$guessHistory.at(-1).guess += letter;
+			$guessHistory = $guessHistory;
+		}
+	};
 </script>
 
-<button>{letter.toUpperCase()}</button>
+<button on:click={handleClick}>{letter}</button>
 
 <style>
 	button {
@@ -18,5 +31,6 @@
 		border: none;
 		font-family: 'Roboto';
 		font-size: 14px;
+		text-transform: uppercase;
 	}
 </style>

@@ -7,11 +7,11 @@
 	{#each letters as row, i}
 		{#if i === letters.length - 1}
 			<div class="row">
-				<Key letter="Enter" />
+				<Key letter="enter" />
 				{#each row as letter}
 					<Key {letter} />
 				{/each}
-				<Key letter="Del" />
+				<Key letter="del" />
 			</div>
 		{:else}
 			<div class="row">

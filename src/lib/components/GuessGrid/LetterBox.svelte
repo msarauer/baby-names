@@ -4,28 +4,16 @@
 	export let incorrect: boolean = false;
 	export let partial: boolean = false;
 	export let correct: boolean = false;
-	export let guess: string = '';
+
 	export let column: number;
 	export let row: number;
 
 	import { guessHistory } from '../../stores/stores';
-
-	$: {
-		if ($guessHistory[row]?.string[column] === guess[column]) {
-			correct = true;
-		}
-	}
-
-	// how many of current letter
-	// if current letter is in correct spot
-	// if current letter exists previously
-	// if current letter exists later in the word and is in correct spot already
-	// if
 </script>
 
 {#if $guessHistory[row]}
 	<div class:tbd class:incorrect class:partial class:correct class="letter-box">
-		{$guessHistory[row].string[column] ?? ''}
+		{$guessHistory[row].guess[column] ?? ''}
 	</div>
 {:else}
 	<div class:tbd class:incorrect class:partial class:correct class="letter-box">{letter}</div>

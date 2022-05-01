@@ -1,6 +1,5 @@
 interface answerKey {
 	answer: string;
-	key: { [key: string]: number };
 	guesses: number;
 }
 
@@ -17,15 +16,8 @@ const numberOfGuesses = (answer: string): number => {
 
 export const createAnswerKey = (answer: string): answerKey => {
 	const guesses: number = numberOfGuesses(answer);
-	const key: answerKey['key'] = {};
-	Array.from(answer).forEach((letter: string) => {
-		if (key[letter]) {
-			key[letter]++;
-		} else {
-			key[letter] = 1;
-		}
-	});
-	answerKey = { answer, key, guesses };
+
+	answerKey = { answer, guesses };
 
 	return answerKey;
 };
