@@ -10,7 +10,6 @@
 			const answer = $answerKey.answer;
 			if (guessKey) {
 				resultKey = checkGuess(guessKey, answer);
-				console.log(resultKey);
 			}
 		}
 	}
