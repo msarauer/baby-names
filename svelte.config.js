@@ -1,5 +1,7 @@
-import adapter from '@sveltejs/adapter-auto';
+// import adapter from '@sveltejs/adapter-auto';
+import azure from 'svelte-adapter-azure-swa';
 import preprocess from 'svelte-preprocess';
+//test
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,7 +10,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: azure()
 	}
 };
 
