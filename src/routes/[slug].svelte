@@ -3,7 +3,7 @@
 	import { answerKey } from '$lib/stores/stores';
 	export async function load({ fetch, params }) {
 		const slug = params.slug;
-		const res = await fetch(`http://localhost:7071/api/getName?game=${slug}`);
+		const res = await fetch(`/api/getName?game=${slug}`);
 		const game = await res.json();
 
 		if (res.ok) {
