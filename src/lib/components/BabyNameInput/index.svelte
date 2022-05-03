@@ -3,9 +3,20 @@
 	import { answerKey } from '../../stores/stores';
 
 	let babyName: string = '';
-	const handleSubmit = () => {
-		answerKey.set(createAnswerKey(babyName));
-		console.log($answerKey);
+
+	const handleSubmit = async () => {
+		let slug = (Math.random() + 1).toString(36).substring(7);
+		const res = await fetch('/api/postName', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				name: babyName,
+				slug
+			})
+		});
+		const game = await res.json();
 	};
 </script>
 
