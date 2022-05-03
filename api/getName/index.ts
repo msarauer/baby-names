@@ -15,11 +15,11 @@ const httpTrigger: AzureFunction = async function (
 		ssl: true
 	};
 
-	// const values = [req.query.game];
+	const values = [req.query.game];
 
 	const querySpec = {
-		text: 'SELECT * FROM babies'
-		// values: values
+		text: 'SELECT * FROM babies WHERE slug = $1',
+		values: values
 	};
 
 	try {
