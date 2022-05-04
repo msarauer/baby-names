@@ -3,7 +3,9 @@
 	import { answerKey } from '$lib/stores/stores';
 	export async function load({ fetch, params }) {
 		const slug = params.slug;
-		const res = await fetch(`http://localhost:7071/api/getName?game=${slug}`);
+		const res = await fetch(
+			`https://black-coast-06bf6a410.1.azurestaticapps.net//api/getName?game=${slug}`
+		);
 		const game = await res.json();
 
 		if (res.ok) {

@@ -6,7 +6,7 @@
 
 	const handleSubmit = async () => {
 		let slug = (Math.random() + 1).toString(36).substring(7);
-		const res = await fetch('http://localhost:7071/api/postName', {
+		const res = await fetch('https://black-coast-06bf6a410.1.azurestaticapps.net//api/postName', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
