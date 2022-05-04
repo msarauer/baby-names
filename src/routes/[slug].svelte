@@ -4,7 +4,7 @@
 	import { supabase } from '../supabase';
 	export async function load({ params }) {
 		const slug = params.slug;
-		const { data, error } = await supabase.from('babies').select();
+		const { data, error } = await supabase.from('babies').select('name').eq('slug', slug);
 		if (error) {
 			return {
 				error: new Error('Could not find the game')
