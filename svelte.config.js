@@ -10,7 +10,16 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: azure()
+		adapter: azure({
+			customStaticWebAppConfig: {
+				globalHeaders: {
+					'X-Content-Type-Options': 'nosniff',
+					'X-Frame-Options': 'DENY',
+					'Content-Security-Policy':
+						"default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+				}
+			}
+		})
 	}
 };
 
