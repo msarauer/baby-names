@@ -1,22 +1,18 @@
 <script lang="ts">
 	import { createAnswerKey } from '$lib/functions/createAnswerKey';
 	import { answerKey } from '../../stores/stores';
+	import { supabase } from '../../../supabase';
 
 	let babyName: string = '';
 
 	const handleSubmit = async () => {
 		let slug = (Math.random() + 1).toString(36).substring(7);
-		const res = await fetch('https://localhost:7071/api/postName', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				name: babyName,
-				slug
-			})
-		});
-		const game = await res.json();
+		let name = babyName;
+		const { data, error } = await supabase.from('babies').insert([{ name, slug }]);
+		if (error) {
+			return console.error(error);
+		}
+		console.log(data);
 	};
 </script>
 

@@ -1,25 +1,20 @@
 <script lang="ts" context="module">
 	import { createAnswerKey } from '$lib/functions/createAnswerKey';
 	import { answerKey } from '$lib/stores/stores';
-	export async function load({ fetch, params }) {
+	import { supabase } from '../supabase';
+	export async function load({ params }) {
 		const slug = params.slug;
-		const res = await fetch(`https://localhost:7071/api/getName?game=${slug}`);
-		const game = await res.json();
-
-		if (res.ok) {
-			const name = game[0].name;
-			answerKey.set(createAnswerKey(name));
-
+		const { data, error } = await supabase.from('babies').select();
+		if (error) {
 			return {
-				props: {
-					name
-				}
+				error: new Error('Could not find the game')
 			};
 		}
-
+		answerKey.set(createAnswerKey(data[0].name));
 		return {
-			status: res.status,
-			error: new Error('Could not find the game')
+			props: {
+				game: data[0].name
+			}
 		};
 	}
 </script>
