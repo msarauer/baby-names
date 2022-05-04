@@ -1,9 +1,4 @@
-interface answerKey {
-	answer: string;
-	guesses: number;
-}
-
-let answerKey: answerKey;
+let answerKey: AnswerKey;
 
 const numberOfGuesses = (answer: string): number => {
 	const length = answer.length;
@@ -14,7 +9,7 @@ const numberOfGuesses = (answer: string): number => {
 	return num;
 };
 
-export const createAnswerKey = (answer: string): answerKey => {
+export const createAnswerKey = (answer: string): AnswerKey => {
 	const guesses: number = numberOfGuesses(answer);
 
 	answerKey = { answer, guesses };

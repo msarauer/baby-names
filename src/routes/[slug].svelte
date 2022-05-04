@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+	// import type {Load} from '@sveltejs/kit'
 	import { createAnswerKey } from '$lib/functions/createAnswerKey';
 	import { answerKey } from '$lib/stores/stores';
 	import { supabase } from '../supabase';

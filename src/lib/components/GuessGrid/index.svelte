@@ -1,12 +1,29 @@
 <script lang="ts">
 	import Row from './Row.svelte';
 	import { answerKey } from '../../stores/stores';
+
+	let winner = false;
+	let loser = false;
+
+	const handleWin = () => {
+		winner = true;
+	};
+
+	const handleLose = () => {
+		loser = true;
+	};
 </script>
 
 <div class="guess-grid">
-	{#each Array($answerKey.guesses) as item, row}
-		<Row {row} />
-	{/each}
+	{#if winner}
+		You win!!!
+	{:else if loser}
+		You Lose!!!
+	{:else}
+		{#each Array($answerKey.guesses) as item, row}
+			<Row {row} on:win={handleWin} on:lose={handleLose} />
+		{/each}
+	{/if}
 </div>
 
 <style>

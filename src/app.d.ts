@@ -8,3 +8,11 @@ declare namespace App {
 	// interface Session {}
 	// interface Stuff {}
 }
+type AnswerKey = {
+	answer: string;
+	guesses: number;
+};
+type ResultKey = {
+	key: string;
+	correct: boolean;
+};
