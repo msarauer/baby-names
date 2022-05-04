@@ -6,7 +6,7 @@
 
 	const handleSubmit = async () => {
 		let slug = (Math.random() + 1).toString(36).substring(7);
-		const res = await fetch('/api/postName', {
+		const res = await fetch('http://localhost:7071/api/postName', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
