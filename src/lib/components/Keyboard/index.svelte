@@ -1,25 +1,16 @@
 <script lang="ts">
 	import Key from './Key.svelte';
-	const letters: string[] = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+	import { letters } from '../../stores/stores';
+	// const letters: string[] = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 </script>
 
 <div class="keyboard">
-	{#each letters as row, i}
-		{#if i === letters.length - 1}
-			<div class="row">
-				<Key letter="enter" />
-				{#each row as letter}
-					<Key {letter} />
-				{/each}
-				<Key letter="del" />
-			</div>
-		{:else}
-			<div class="row">
-				{#each row as letter}
-					<Key {letter} />
-				{/each}
-			</div>
-		{/if}
+	{#each $letters as row, i}
+		<div class="row">
+			{#each row as letter}
+				<Key letter={Object.keys(letter)[0]} />
+			{/each}
+		</div>
 	{/each}
 </div>
 
