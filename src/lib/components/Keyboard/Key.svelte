@@ -1,21 +1,35 @@
 <script lang="ts">
 	export let letter: string;
+	export let colorCode: string;
 	import { answerKey, guessHistory } from '../../stores/stores';
+
+	const colorKey: {
+		[key: string]: string;
+	} = {
+		'1': 'dark',
+		'2': 'yellow',
+		'3': 'green'
+	};
 
 	const handleClick = () => {
 		if (letter === 'enter') {
 			if ($answerKey.answer.length === $guessHistory.at(-1)?.guess.length) {
-				$guessHistory.at(-1).complete = true;
+				$guessHistory.at(-1)!.complete = true;
 				$guessHistory = [...$guessHistory, { guess: '', complete: false }];
 			}
+		} else if (letter === 'del') {
+			$guessHistory.at(-1)!.guess = $guessHistory.at(-1)!.guess.slice(0, -1);
+			//This line is necessary to trigger a re-render
+			$guessHistory = $guessHistory;
 		} else {
-			$guessHistory.at(-1).guess += letter;
+			$guessHistory.at(-1)!.guess += letter;
+			//This line is necessary to trigger a re-render
 			$guessHistory = $guessHistory;
 		}
 	};
 </script>
 
-<button on:click={handleClick}>{letter}</button>
+<button on:click={handleClick} class={colorKey[colorCode]}>{letter}</button>
 
 <style>
 	button {
@@ -32,5 +46,14 @@
 		font-family: 'Roboto';
 		font-size: 14px;
 		text-transform: uppercase;
+	}
+	.dark {
+		background-color: rgb(49, 49, 49);
+	}
+	.yellow {
+		background-color: rgb(205, 193, 57);
+	}
+	.green {
+		background-color: rgb(84, 183, 42);
 	}
 </style>

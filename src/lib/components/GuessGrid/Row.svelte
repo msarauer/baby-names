@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LetterBox from './LetterBox.svelte';
-	import { guessHistory, answerKey } from '../../stores/stores';
+	import { guessHistory, answerKey, letters } from '../../stores/stores';
 	import { checkGuess } from '$lib/functions/checkGuess';
 
 	import { createEventDispatcher } from 'svelte';
@@ -14,11 +14,12 @@
 			const answer = $answerKey.answer;
 			if (guessKey) {
 				resultKey = checkGuess(guessKey, answer);
+				$letters = $letters;
 			}
 			if (resultKey.correct) {
 				dispatch('win');
 			}
-			// if you submit on last row without winning, dispatch loase event
+			// if you submit on last row without winning, dispatch lose event
 			if ($answerKey.guesses - 1 === row) {
 				dispatch('lose');
 			}
@@ -31,9 +32,9 @@
 		<LetterBox
 			{column}
 			{row}
-			correct={resultKey.key[column] === 'c'}
-			partial={resultKey.key[column] === 'p'}
-			incorrect={resultKey.key[column] === 'x'}
+			correct={resultKey.key[column] === '3'}
+			partial={resultKey.key[column] === '2'}
+			incorrect={resultKey.key[column] === '1'}
 		/>
 	{/each}
 </div>
