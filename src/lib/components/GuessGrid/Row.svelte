@@ -8,13 +8,22 @@
 
 	export let row: number;
 	export let resultKey: ResultKey = { key: '', correct: false };
+	interface letterObj {
+		[key: string]: string;
+	}
 	$: {
 		if ($guessHistory[row]?.complete) {
 			const guessKey = $guessHistory[row].guess;
 			const answer = $answerKey.answer;
 			if (guessKey) {
 				resultKey = checkGuess(guessKey, answer);
-				$letters = $letters;
+
+				for (let i = 0; i < guessKey.length; i++) {
+					if (resultKey.key[i] > $letters[guessKey[i]]) {
+						$letters[guessKey[i]] = resultKey.key[i];
+					}
+				}
+				$guessHistory[row].complete = false;
 			}
 			if (resultKey.correct) {
 				dispatch('win');
