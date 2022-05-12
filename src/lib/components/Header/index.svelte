@@ -10,5 +10,6 @@
 		margin-bottom: 1em;
 		font-family: 'Cabin Sketch', cursive;
 		font-weight: 700;
+		color: var(--girl-color);
 	}
 </style>

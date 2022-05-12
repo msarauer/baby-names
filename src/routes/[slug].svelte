@@ -5,16 +5,16 @@
 	import { supabase } from '../supabase';
 	export async function load({ params }) {
 		const slug = params.slug;
-		const { data, error } = await supabase.from('babies').select('name').eq('slug', slug);
+		const { data, error } = await supabase.from('babies').select('babyName').eq('slug', slug);
 		if (error) {
 			return {
 				error: new Error('Could not find the game')
 			};
 		}
-		answerKey.set(createAnswerKey(data[0].name));
+		answerKey.set(createAnswerKey(data[0].babyName));
 		return {
 			props: {
-				game: data[0].name
+				game: data[0].babyName
 			}
 		};
 	}

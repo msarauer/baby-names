@@ -4,4 +4,13 @@
 </script>
 
 <Header />
-<slot />
+<div class="container">
+	<slot />
+</div>
+
+<style>
+	.container {
+		max-width: 90%;
+		margin: auto;
+	}
+</style>
