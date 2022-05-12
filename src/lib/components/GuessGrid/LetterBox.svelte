@@ -56,7 +56,9 @@
 	.letter-box {
 		width: 60px;
 		height: 60px;
-		font-size: 100%;
+		font-size: 40px;
+		font-family: 'Nanum Pen Script', cursive;
+		/* font-weight: 700; */
 		background-image: var(--bg-image);
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -83,7 +85,6 @@
 	.letter-box-empty {
 		width: 60px;
 		height: 60px;
-		font-size: 40px;
 		background-image: var(--bg-image);
 		background-position: center;
 		background-size: contain;

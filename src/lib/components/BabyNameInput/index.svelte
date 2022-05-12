@@ -34,6 +34,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		margin: 0 2em;
 	}
 	.name-input {
 		display: flex;

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Nanum+Pen+Script&display=swap');
 
 body {
 	background-color: #ffffff;
-	font-family: 'Roboto';
+	font-family: 'Nanum Pen Script', cursive;
 	color: #444444;
 }

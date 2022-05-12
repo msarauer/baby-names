@@ -43,8 +43,8 @@
 		height: 48px;
 		cursor: pointer;
 		border: none;
-		font-family: 'Roboto';
-		font-size: 14px;
+		font-family: 'Nanum Pen Script', cursive;
+		font-size: 18px;
 		text-transform: uppercase;
 	}
 	.dark {
