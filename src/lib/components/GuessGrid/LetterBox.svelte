@@ -1,16 +1,18 @@
 <script lang="ts">
 	import { guessHistory } from '../../stores/stores';
 	import { fade } from 'svelte/transition';
-
+	import { seeds } from '../../data/randomSeed';
 	export let letter: string = '';
-	export let tbd: boolean = false;
 	export let incorrect: boolean = false;
 	export let partial: boolean = false;
 	export let correct: boolean = false;
 
 	export let column: number;
 	export let row: number;
-	let randBg = Math.floor(Math.random() * 6) + 1;
+
+	//using predictable seeds so that the server and client rendering are the same (they were different with Math.random())
+	export let randBg = seeds[row][column];
+
 	let color = '';
 	let bgStatus: string;
 	let BgStatusUrl: string;

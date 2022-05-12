@@ -40,7 +40,4 @@
 		justify-content: center;
 		margin-bottom: 3em;
 	}
-	a {
-		color: white;
-	}
 </style>
