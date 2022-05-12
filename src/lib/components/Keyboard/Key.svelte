@@ -33,13 +33,13 @@
 
 <style>
 	button {
-		background-color: rgb(122, 122, 122);
+		background-color: rgb(152, 152, 152);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		color: white;
 		border-radius: 7px;
-		min-width: 38px;
+		min-width: 30px;
 		height: 48px;
 		cursor: pointer;
 		border: none;
@@ -51,7 +51,7 @@
 		background-color: rgb(49, 49, 49);
 	}
 	.yellow {
-		background-color: rgb(205, 193, 57);
+		background-color: rgb(253, 178, 88);
 	}
 	.green {
 		background-color: rgb(84, 183, 42);

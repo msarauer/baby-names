@@ -8,6 +8,7 @@
 
 	export let row: number;
 	export let resultKey: ResultKey = { key: '', correct: false };
+
 	interface letterObj {
 		[key: string]: string;
 	}
