@@ -23,11 +23,11 @@
 		} else if (incorrect) {
 			color = 'grey';
 		}
-		BgStatusUrl = `src/lib/assets/${color}.png`;
+		BgStatusUrl = `/assets/${color}.png`;
 		bgStatus = `url('${BgStatusUrl}')`;
 		transition = column * 600;
 	}
-	let BgUrl = `src/lib/assets/sq${randBg}.png`;
+	let BgUrl = `/assets/sq${randBg}.png`;
 	const bgImage = `url('${BgUrl}')`;
 </script>
 
@@ -54,7 +54,7 @@
 	.letter-box {
 		width: 60px;
 		height: 60px;
-		font-size: 40px;
+		font-size: 100%;
 		background-image: var(--bg-image);
 		background-size: contain;
 		background-repeat: no-repeat;
