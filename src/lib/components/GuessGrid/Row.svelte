@@ -52,6 +52,7 @@
 <style>
 	.guess-row {
 		display: flex;
-		gap: 0.7em;
+		/* gap: 0.7em; */
+		max-width: 100%;
 	}
 </style>

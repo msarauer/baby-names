@@ -58,6 +58,7 @@
 		background-image: var(--bg-image);
 		background-size: contain;
 		background-repeat: no-repeat;
+		background-position: center;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -69,6 +70,7 @@
 		background-image: var(--bg-status);
 		background-size: contain;
 		background-repeat: no-repeat;
+		background-position: center;
 		width: 60px;
 		height: 100%;
 		position: absolute;
@@ -81,6 +83,7 @@
 		height: 60px;
 		font-size: 40px;
 		background-image: var(--bg-image);
+		background-position: center;
 		background-size: contain;
 		background-repeat: no-repeat;
 	}
