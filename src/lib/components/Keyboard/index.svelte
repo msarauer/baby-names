@@ -30,6 +30,7 @@
 		flex-direction: column;
 		margin-top: 3em;
 		gap: 0.3em;
+		max-width: 100vw;
 	}
 	.row {
 		display: flex;
