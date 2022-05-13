@@ -38,14 +38,14 @@
 		justify-content: center;
 		align-items: center;
 		color: white;
-		border-radius: 7px;
-		min-width: 22px;
-		height: 48px;
+		border-radius: 4px;
+		height: 58px;
 		cursor: pointer;
 		border: none;
 		font-family: 'Nanum Pen Script', cursive;
 		font-size: 22px;
 		text-transform: uppercase;
+		user-select: none;
 	}
 	.dark {
 		background-color: rgb(49, 49, 49);

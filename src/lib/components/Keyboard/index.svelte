@@ -28,13 +28,16 @@
 	.keyboard {
 		display: flex;
 		flex-direction: column;
-		margin-top: 3em;
-		gap: 0.3em;
-		max-width: 100vw;
+		gap: 6px;
+		margin: 0 8px;
+		height: 200px;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
-		gap: 0.2em;
+		gap: 6px;
+		width: 100%;
+		touch-action: manipulation;
+		margin: 0 auto 8px;
 	}
 </style>
