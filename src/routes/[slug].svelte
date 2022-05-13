@@ -25,7 +25,13 @@
 	import Keyboard from '$lib/components/Keyboard/index.svelte';
 </script>
 
-<div>
+<div class="game-area">
 	<GuessGrid />
 	<Keyboard />
 </div>
+
+<style>
+	.game-area {
+		max-width: 100%;
+	}
+</style>

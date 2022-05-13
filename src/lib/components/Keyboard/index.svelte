@@ -29,11 +29,11 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 3em;
-		gap: 0.5em;
+		gap: 0.3em;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
-		gap: 0.3em;
+		gap: 0.2em;
 	}
 </style>

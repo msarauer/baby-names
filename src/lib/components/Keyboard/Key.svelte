@@ -44,7 +44,7 @@
 		cursor: pointer;
 		border: none;
 		font-family: 'Nanum Pen Script', cursive;
-		font-size: 18px;
+		font-size: 22px;
 		text-transform: uppercase;
 	}
 	.dark {
