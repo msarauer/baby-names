@@ -32,6 +32,10 @@
 
 <style>
 	.game-area {
-		max-width: 100%;
+		max-width: 100vw;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 </style>

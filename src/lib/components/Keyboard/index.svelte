@@ -31,6 +31,7 @@
 		gap: 6px;
 		margin: 0 8px;
 		height: 200px;
+		max-width: 100vw;
 	}
 	.row {
 		display: flex;
