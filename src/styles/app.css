@@ -4,4 +4,7 @@ body {
 	background-color: #ffffff;
 	font-family: 'Nanum Pen Script', cursive;
 	color: #444444;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
 }
