@@ -39,7 +39,7 @@
 		align-items: center;
 		color: white;
 		border-radius: 7px;
-		min-width: 30px;
+		min-width: 22px;
 		height: 48px;
 		cursor: pointer;
 		border: none;
