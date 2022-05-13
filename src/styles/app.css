@@ -6,7 +6,6 @@ html {
 	font-family: 'Nanum Pen Script', cursive;
 	color: #444444;
 	margin: 0;
-	max-width: 100vw;
 	height: 100vh;
 	box-sizing: border-box;
 }
