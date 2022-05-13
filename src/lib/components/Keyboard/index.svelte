@@ -30,7 +30,7 @@
 		flex-direction: column;
 		margin: 0 8px;
 		height: 200px;
-		max-width: fit-content;
+		max-width: 1000px;
 	}
 	.row {
 		display: flex;

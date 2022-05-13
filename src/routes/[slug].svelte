@@ -41,7 +41,7 @@
 		align-items: center;
 		justify-content: space-between;
 		max-height: fit-content;
-		width: 100vw;
+		/* width: 100vw; */
 	}
 	.game-area {
 		max-width: 100%;
