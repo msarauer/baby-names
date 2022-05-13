@@ -28,16 +28,14 @@
 	.keyboard {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
 		margin: 0 8px;
 		height: 200px;
-		max-width: 100vw;
+		max-width: fit-content;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
 		gap: 6px;
-		max-width: 100vw;
 		touch-action: manipulation;
 		margin: 0 auto 8px;
 	}
