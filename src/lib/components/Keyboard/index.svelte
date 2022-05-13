@@ -37,7 +37,7 @@
 		display: flex;
 		justify-content: center;
 		gap: 6px;
-		width: 100%;
+		max-width: 100vw;
 		touch-action: manipulation;
 		margin: 0 auto 8px;
 	}
