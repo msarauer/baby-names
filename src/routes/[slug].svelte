@@ -29,7 +29,7 @@
 	<div class="game-area">
 		<GuessGrid />
 	</div>
-	<div>
+	<div class="keyboard-container">
 		<Keyboard />
 	</div>
 </div>
@@ -43,6 +43,9 @@
 		max-height: fit-content;
 	}
 	.game-area {
+		max-width: 100%;
+	}
+	.keyboard-container {
 		max-width: 100%;
 	}
 </style>
