@@ -25,17 +25,24 @@
 	import Keyboard from '$lib/components/Keyboard/index.svelte';
 </script>
 
-<div class="game-area">
-	<GuessGrid />
-	<Keyboard />
+<div class="screen">
+	<div class="game-area">
+		<GuessGrid />
+	</div>
+	<div>
+		<Keyboard />
+	</div>
 </div>
 
 <style>
-	.game-area {
-		max-width: 100%;
-		height: 100%;
+	.screen {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		justify-content: space-between;
+		max-height: fit-content;
+	}
+	.game-area {
+		max-width: 100%;
 	}
 </style>
