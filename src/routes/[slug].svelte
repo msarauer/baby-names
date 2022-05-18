@@ -40,13 +40,6 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		max-height: fit-content;
-		/* width: 100vw; */
-	}
-	.game-area {
-		max-width: 100%;
-	}
-	.keyboard-container {
-		max-width: 100%;
+		height: calc(100vh - 200px);
 	}
 </style>

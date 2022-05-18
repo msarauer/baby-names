@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { guessHistory } from '../../stores/stores';
+	import { guessHistory, answerKey } from '../../stores/stores';
 	import { fade } from 'svelte/transition';
 	import { seeds } from '../../data/randomSeed';
 	export let letter: string = '';
@@ -54,11 +54,10 @@
 
 <style>
 	.letter-box {
-		width: 60px;
-		height: 60px;
-		font-size: 40px;
+		min-width: calc(100% / 9);
+		width: 100%;
+		font-size: 200%;
 		font-family: 'Nanum Pen Script', cursive;
-		/* font-weight: 700; */
 		background-image: var(--bg-image);
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -83,8 +82,9 @@
 		z-index: 1;
 	}
 	.letter-box-empty {
-		width: 60px;
-		height: 60px;
+		min-width: calc(100% / 9);
+		width: 100%;
+		min-height: 100%;
 		background-image: var(--bg-image);
 		background-position: center;
 		background-size: contain;

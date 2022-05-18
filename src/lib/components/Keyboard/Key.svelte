@@ -34,9 +34,6 @@
 <style>
 	button {
 		background-color: rgb(152, 152, 152);
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		color: white;
 		border-radius: 4px;
 		height: 58px;
@@ -46,6 +43,10 @@
 		font-size: 22px;
 		text-transform: uppercase;
 		user-select: none;
+		padding: 0;
+		min-width: 30px;
+		max-width: 80px;
+		margin: 0;
 	}
 	.dark {
 		background-color: rgb(49, 49, 49);
