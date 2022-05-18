@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { guessHistory } from '../../stores/stores';
+	import { guessHistory, answerKey } from '../../stores/stores';
 	import { fade } from 'svelte/transition';
 	import { seeds } from '../../data/randomSeed';
 	export let letter: string = '';

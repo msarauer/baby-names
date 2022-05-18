@@ -34,7 +34,10 @@
 	.row {
 		display: flex;
 		justify-content: center;
-		gap: 6px;
 		touch-action: manipulation;
+<<<<<<< HEAD
+=======
+		gap: 6px;
+>>>>>>> 726751e024a464c643a3039f5df75aaf1252342e
 	}
 </style>
