@@ -16,6 +16,5 @@
 	.container {
 		max-width: 90%;
 		margin: auto;
-		height: calc(100vh - 105px);
 	}
 </style>
