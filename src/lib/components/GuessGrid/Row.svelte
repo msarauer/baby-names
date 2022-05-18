@@ -55,10 +55,7 @@
 		width: 90vw;
 		max-width: 500px;
 		min-height: 40px;
-<<<<<<< HEAD
-=======
 		/* flex-grow: 1; */
->>>>>>> 726751e024a464c643a3039f5df75aaf1252342e
 		justify-content: space-between;
 	}
 </style>
