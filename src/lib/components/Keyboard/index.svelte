@@ -33,10 +33,12 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 6px;
+		max-width: 350px;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
 		touch-action: manipulation;
+		gap: 3px;
 	}
 </style>

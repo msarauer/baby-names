@@ -50,7 +50,7 @@
 		font-size: 22px;
 		text-transform: uppercase;
 		user-select: none;
-		padding: 0;
+		/* padding: 0; */
 		min-width: 30px;
 		max-width: 80px;
 		margin: 0;
