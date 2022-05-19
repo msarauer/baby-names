@@ -8,11 +8,15 @@
 	let loser = false;
 
 	const handleWin = () => {
-		winner = true;
+		setTimeout(() => {
+			winner = true;
+		}, delay * $answerKey.answer.length);
 	};
 
 	const handleLose = () => {
-		loser = true;
+		setTimeout(() => {
+			loser = true;
+		}, delay * $answerKey.answer.length);
 	};
 </script>
 
@@ -21,7 +25,8 @@
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
 	{#if winner}
-		You win!!!{:else if loser}
+		You win!!!
+	{:else if loser}
 		You Lose!!!
 	{/if}
 </div>
