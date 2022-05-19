@@ -1,7 +1,10 @@
 <script lang="ts">
 	import Key from './Key.svelte';
-	const lets = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 	import { letters } from '../../stores/stores';
+
+	const lets = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+
+	export let delay: number;
 </script>
 
 <div class="keyboard">
@@ -10,14 +13,14 @@
 			<div class="row">
 				<Key letter="enter" />
 				{#each row as letter}
-					<Key {letter} colorCode={$letters[letter]} />
+					<Key {letter} {delay} colorCode={$letters[letter]} />
 				{/each}
 				<Key letter="del" />
 			</div>
 		{:else}
 			<div class="row">
 				{#each row as letter}
-					<Key {letter} colorCode={$letters[letter]} />
+					<Key {letter} {delay} colorCode={$letters[letter]} />
 				{/each}
 			</div>
 		{/if}

@@ -6,10 +6,9 @@
 	export let incorrect: boolean = false;
 	export let partial: boolean = false;
 	export let correct: boolean = false;
-
 	export let column: number;
 	export let row: number;
-
+	export let delay: number;
 	//using predictable seeds so that the server and client rendering are the same (they were different with Math.random())
 	export let randBg = seeds[row][column];
 
@@ -27,7 +26,7 @@
 		}
 		BgStatusUrl = `/assets/${color}.png`;
 		bgStatus = `url('${BgStatusUrl}')`;
-		transition = column * 600;
+		transition = column * delay;
 	}
 	let BgUrl = `/assets/sq${randBg}.png`;
 	const bgImage = `url('${BgUrl}')`;
@@ -36,11 +35,7 @@
 {#if $guessHistory[row]}
 	<div class="letter-box" style="--bg-image:{bgImage}; --bg-status:{bgStatus}">
 		{#if partial || correct || incorrect}
-			<div
-				class="check"
-				transition:fade={{ delay: transition, duration: 150 }}
-				style="--bg-transition:{transition}"
-			/>
+			<div class="check" transition:fade={{ delay: transition, duration: 150 }} />
 		{/if}
 		<div class="letter">
 			{$guessHistory[row].guess[column] ?? ''}

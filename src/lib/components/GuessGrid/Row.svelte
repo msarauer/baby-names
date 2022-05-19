@@ -7,6 +7,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let row: number;
+	export let delay: number;
 	export let resultKey: ResultKey = { key: '', correct: false };
 
 	interface letterObj {
@@ -20,10 +21,12 @@
 				resultKey = checkGuess(guessKey, answer);
 
 				for (let i = 0; i < guessKey.length; i++) {
+					//check if each letter of the guess is better than previous guesses
 					if (resultKey.key[i] > $letters[guessKey[i]]) {
 						$letters[guessKey[i]] = resultKey.key[i];
 					}
 				}
+				//set complete to false so that this row is not checked later
 				$guessHistory[row].complete = false;
 			}
 			if (resultKey.correct) {
@@ -42,6 +45,7 @@
 		<LetterBox
 			{column}
 			{row}
+			{delay}
 			correct={resultKey.key[column] === '3'}
 			partial={resultKey.key[column] === '2'}
 			incorrect={resultKey.key[column] === '1'}
@@ -55,7 +59,6 @@
 		width: 90vw;
 		max-width: 500px;
 		min-height: 40px;
-		/* flex-grow: 1; */
 		justify-content: space-between;
 	}
 </style>

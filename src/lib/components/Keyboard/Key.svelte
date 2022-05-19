@@ -1,7 +1,10 @@
 <script lang="ts">
-	export let letter: string;
-	export let colorCode: string;
+	import { fade } from 'svelte/transition';
 	import { answerKey, guessHistory } from '../../stores/stores';
+
+	export let letter: string;
+	export let colorCode: string = '';
+	export let delay: number = 0;
 
 	const colorKey: {
 		[key: string]: string;
@@ -22,14 +25,18 @@
 			//This line is necessary to trigger a re-render
 			$guessHistory = $guessHistory;
 		} else {
-			$guessHistory.at(-1)!.guess += letter;
-			//This line is necessary to trigger a re-render
-			$guessHistory = $guessHistory;
+			if ($guessHistory.at(-1)!.guess.length < $answerKey.answer.length) {
+				$guessHistory.at(-1)!.guess += letter;
+				//This line is necessary to trigger a re-render
+				$guessHistory = $guessHistory;
+			}
 		}
 	};
 </script>
 
-<button on:click={handleClick} class={colorKey[colorCode]}>{letter}</button>
+<div style="--bg-delay: {delay * $answerKey.answer.length}ms">
+	<button on:click={handleClick} class={colorKey[colorCode]}>{letter}</button>
+</div>
 
 <style>
 	button {
@@ -50,11 +57,17 @@
 	}
 	.dark {
 		background-color: rgb(49, 49, 49);
+		transition: background-color 500ms linear;
+		transition-delay: var(--bg-delay);
 	}
 	.yellow {
 		background-color: rgb(253, 178, 88);
+		transition: background-color 500ms linear;
+		transition-delay: var(--bg-delay);
 	}
 	.green {
 		background-color: rgb(84, 183, 42);
+		transition: background-color 500ms linear;
+		transition-delay: var(--bg-delay);
 	}
 </style>
