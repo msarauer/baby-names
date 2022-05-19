@@ -35,7 +35,9 @@
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">
-	<button on:click={handleClick} class={colorKey[colorCode]}>{letter}</button>
+	<button on:click={handleClick} class={colorKey[colorCode]} class:wide={letter.length > 1}
+		>{letter}</button
+	>
 </div>
 
 <style>
@@ -50,7 +52,7 @@
 		font-size: 22px;
 		text-transform: uppercase;
 		user-select: none;
-		/* padding: 0; */
+		padding: 0;
 		min-width: 30px;
 		max-width: 80px;
 		margin: 0;
@@ -69,5 +71,8 @@
 		background-color: rgb(84, 183, 42);
 		transition: background-color 500ms linear;
 		transition-delay: var(--bg-delay);
+	}
+	.wide {
+		padding: 10px;
 	}
 </style>
