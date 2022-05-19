@@ -22,7 +22,7 @@
 
 <div class="guess-grid">
 	{#each Array($answerKey.guesses) as item, row}
-		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
+		<Row {row} {delay} on:win on:lose={handleLose} />
 	{/each}
 	{#if winner}
 		You win!!!
@@ -37,5 +37,6 @@
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		position: relative;
 	}
 </style>

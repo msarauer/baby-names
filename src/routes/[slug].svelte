@@ -23,13 +23,21 @@
 <script lang="ts">
 	import GuessGrid from '$lib/components/GuessGrid/index.svelte';
 	import Keyboard from '$lib/components/Keyboard/index.svelte';
+	import Balloons from '$lib/components/Balloons/index.svelte';
 
 	let delay = 600;
+	let showBalloons = false;
+
+	const handleWin = () => {
+		showBalloons = true;
+	};
 </script>
 
 <div class="screen">
+	{#if showBalloons}
+		<div class="balloons"><Balloons /></div>{/if}
 	<div class="game-area">
-		<GuessGrid {delay} />
+		<GuessGrid {delay} on:win={handleWin} />
 	</div>
 	<div class="keyboard-container">
 		<Keyboard {delay} />
@@ -43,5 +51,17 @@
 		align-items: center;
 		justify-content: space-between;
 		height: calc(100vh - 200px);
+	}
+	.balloons {
+		position: fixed;
+		padding: 0;
+		margin: 0;
+
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+		z-index: 2;
 	}
 </style>
