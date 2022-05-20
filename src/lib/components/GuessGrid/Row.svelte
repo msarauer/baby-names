@@ -40,7 +40,7 @@
 	}
 </script>
 
-<div class="guess-row">
+<div class="guess-row" style="--max-width:{$answerKey.answer.length * 60}px">
 	{#each $answerKey.answer as letter, column}
 		<LetterBox
 			{column}
@@ -56,8 +56,8 @@
 <style>
 	.guess-row {
 		display: flex;
-		width: 90vw;
-		max-width: 500px;
+		width: var(--max-width);
+		max-width: 90vw;
 		min-height: 40px;
 		justify-content: space-between;
 	}

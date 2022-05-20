@@ -42,21 +42,21 @@
 	}
 
 	.balloon {
-		height: 125px;
-		width: 105px;
+		height: 90px;
+		width: 72px;
 		border-radius: 75% 75% 70% 70%;
 		position: relative;
 	}
 
 	.balloon:before {
 		content: '';
-		height: 75px;
+		height: 60px;
 		width: 1px;
 		padding: 1px;
 		background-color: #fdfd96;
 		display: block;
 		position: absolute;
-		top: 125px;
+		top: 90px;
 		left: 0;
 		right: 0;
 		margin: auto;
@@ -68,7 +68,7 @@
 		display: block;
 		position: absolute;
 		color: inherit;
-		top: 120px;
+		top: 85px;
 		left: 0;
 		right: 0;
 		margin: auto;
