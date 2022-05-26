@@ -59,6 +59,7 @@
 		width: var(--max-width);
 		max-width: 90vw;
 		min-height: 40px;
+		height: 60px;
 		justify-content: space-between;
 	}
 </style>

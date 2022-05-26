@@ -12,7 +12,7 @@
 		oz: null,
 		message: ''
 	};
-	let errors = { babyName: '', parent1: '', gender: '', lbs: '', oz: '' };
+	let errors = { babyName: '', parent1: '', gender: '', weight: '' };
 	let valid = false;
 	let submitted: boolean = false;
 	let url: string;
@@ -41,19 +41,37 @@
 		//validate gender
 		if (fields.gender === '') {
 			valid = false;
-			errors.gender = 'You must selecta gender.';
+			errors.gender = 'You must select a gender.';
 		} else {
 			errors.gender = '';
 		}
-		let slug = (Math.random() + 1).toString(36).substring(7);
-		const { data, error } = await supabase
-			.from('babies')
-			.insert([{ babyName: fields.babyName.toLowerCase(), slug }]);
-		if (error) {
-			return console.error(error);
+
+		//validate weight
+		if (fields.weight) {
+			if (fields.lbs === null || fields.oz === null) {
+				valid = false;
+				errors.weight = 'You must enter both lbs and oz.';
+			} else if(fields.lbs > 20 || fields.lbs < 1) {
+				valid = false;
+				errors.weight = 'You must enter both lbs and oz.';
+			}
+			
+			else {
+				errors.weight = '';
+			}
 		}
-		submitted = true;
-		url = `/${slug}`;
+
+		if (valid) {
+			let slug = (Math.random() + 1).toString(36).substring(7);
+			const { data, error } = await supabase
+				.from('babies')
+				.insert([{ babyName: fields.babyName.toLowerCase(), slug }]);
+			if (error) {
+				return console.error(error);
+			}
+			url = `/${slug}`;
+			submitted = true;
+		}
 	};
 </script>
 
@@ -67,6 +85,7 @@
 		<div class="input-group">
 			<label for="babyName">Please enter the name of your new baby:</label>
 			<input name="babyName" bind:value={fields.babyName} />
+			<div class="errors">{errors.babyName}</div>
 		</div>
 		<div class="input-group">
 			<label for="gender">Please select the gender of the new baby:</label>
@@ -74,6 +93,7 @@
 				<option>Boy</option>
 				<option>Girl</option>
 			</select>
+			<div class="errors">{errors.gender}</div>
 		</div>
 		<div class="input-group">
 			<fieldset>
@@ -81,19 +101,22 @@
 				<label>Enter weight?<input type="checkbox" bind:checked={fields.weight} /></label>
 				<div class="weight">
 					<label>
-						<input disabled={!fields.weight} name="lbs" type="number" bind:value={fields.lbs} />
+						<input disabled={!fields.weight} name="lbs" type="number" min='1' max='20' bind:value={fields.lbs} />
 						lbs
 					</label>
+
 					<label>
-						<input disabled={!fields.weight} name="oz" type="number" bind:value={fields.oz} />
+						<input disabled={!fields.weight} name="oz" type="number" min='0' max='15.99' bind:value={fields.oz} />
 						oz
 					</label>
 				</div>
+				<div class="errors">{errors.weight}</div>
 			</fieldset>
 		</div>
 		<div class="input-group">
 			<label for="parent1">Please enter your name:</label>
 			<input name="parent1" bind:value={fields.parent1} />
+			<div class="errors">{errors.parent1}</div>
 		</div>
 		<div class="input-group">
 			<label for="parent2">Please enter your partner's name (optional):</label>
@@ -117,24 +140,30 @@
 		max-width: 400px;
 		margin: auto;
 		padding: 5px;
+		font-size: 16px;
 	}
 	.input-group {
 		display: flex;
 		flex-direction: column;
 	}
 	.weight > label > input {
-		width: 30px;
+		width: 50px;
 	}
-
+	label {
+		font-size: 30px;
+	}
 	input {
 		width: 100%;
 		box-sizing: border-box;
+		font-size: 20px;
 	}
 	input[type='checkbox'] {
-		width: 10px;
+		width: 25px;
+		height: 25px;
 	}
 	select {
 		font-family: 'Nanum Pen Script', cursive;
+		font-size: 20px;
 	}
 	.congrats {
 		display: flex;
@@ -158,5 +187,10 @@
 		color: var(--girl-color);
 		background: var(--boy-color);
 		border: 1px solid var(--girl-color);
+	}
+	.errors {
+		font-size: 16px;
+
+		color: #d91b42;
 	}
 </style>
