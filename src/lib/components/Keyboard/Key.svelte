@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import { answerKey, guessHistory } from '../../stores/stores';
 
 	export let letter: string;
@@ -9,7 +8,7 @@
 	const colorKey: {
 		[key: string]: string;
 	} = {
-		'1': 'bg-neutral text-neutral-content',
+		'1': 'bg-base-content text-base-100',
 		'2': 'bg-warning text-warning-content',
 		'3': 'bg-success text-success-content'
 	};
@@ -35,7 +34,7 @@
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">
-	<button on:click={handleClick} class="bg-base-200 delay kbd md:text-[22px] {colorKey[colorCode]}"
+	<button on:click={handleClick} class=" delay kbd md:text-[22px] {colorKey[colorCode]}"
 		>{letter}</button
 	>
 </div>

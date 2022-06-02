@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { bind } from 'svelte/internal';
 	import { supabase } from '../../../supabase';
+	import Input from './Input.svelte';
 
 	let fields = {
 		babyName: '',
@@ -80,11 +80,12 @@
 			<a href={url}>{window.location.origin}{url}</a>
 		</div>
 	{:else}
-		<div class="">
-			<label class="label" for="babyName">Please enter the name of your new baby:</label>
-			<input class="input" name="babyName" bind:value={fields.babyName} />
-			<div class="errors">{errors.babyName}</div>
-		</div>
+		<Input
+			name="babyName"
+			field={fields.babyName}
+			error={errors.babyName}
+			label="Please enter the name of your new baby:"
+		/>
 		<div class="">
 			<label class="label" for="gender">Please select the gender of the new baby:</label>
 			<select name="gender" class="select" bind:value={fields.gender}>
@@ -132,20 +133,26 @@
 				<div class="errors">{errors.weight}</div>
 			</fieldset>
 		</div>
-		<div class="">
-			<label class="label" for="parent1">Please enter your name:</label>
-			<input name="parent1" class="input" bind:value={fields.parent1} />
-			<div class="errors">{errors.parent1}</div>
-		</div>
-		<div class="">
-			<label class="label" for="parent2">Please enter your partner's name (optional):</label>
-			<input name="parent2" class="input" bind:value={fields.parent2} />
-		</div>
+		<Input
+			name="parent1"
+			field={fields.parent1}
+			error={errors.parent1}
+			label="Please enter your name:"
+		/>
+		<Input
+			name="parent2"
+			field={fields.parent2}
+			label="Please enter your partner's name (optional):"
+		/>
 		<div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
-			<textarea rows="3" name="message" bind:value={fields.message} />
+			<textarea
+				class="textarea textarea-secondary"
+				rows="3"
+				name="message"
+				bind:value={fields.message}
+			/>
 		</div>
-
 		<button class="btn btn-secondary" type="submit">Submit</button>
 	{/if}
 </form>
@@ -160,11 +167,5 @@
 	button {
 		font-size: 20px;
 		font-family: 'Nanum Pen Script', cursive;
-	}
-
-	.errors {
-		font-size: 16px;
-
-		color: #d91b42;
 	}
 </style>

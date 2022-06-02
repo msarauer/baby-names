@@ -20,6 +20,10 @@ html {
 	@apply input-secondary w-full;
 }
 
+.textarea {
+	@apply textarea-secondary w-full;
+}
+
 .select {
 	@apply select-secondary w-full;
 }
