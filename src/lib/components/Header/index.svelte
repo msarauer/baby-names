@@ -1,5 +1,5 @@
 <header>
-	<h1>BABY NAMES</h1>
+	<h1 class="text-3xl">BABY NAMES</h1>
 </header>
 
 <style>

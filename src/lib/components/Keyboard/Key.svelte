@@ -9,9 +9,9 @@
 	const colorKey: {
 		[key: string]: string;
 	} = {
-		'1': 'dark',
-		'2': 'yellow',
-		'3': 'green'
+		'1': 'bg-neutral text-neutral-content',
+		'2': 'bg-warning text-warning-content',
+		'3': 'bg-success text-success-content'
 	};
 
 	const handleClick = () => {
@@ -35,44 +35,20 @@
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">
-	<button on:click={handleClick} class={colorKey[colorCode]} class:wide={letter.length > 1}
+	<button on:click={handleClick} class="bg-base-200 delay kbd md:text-[22px] {colorKey[colorCode]}"
 		>{letter}</button
 	>
 </div>
 
 <style>
 	button {
-		background-color: rgb(152, 152, 152);
-		color: white;
-		border-radius: 4px;
-		height: 58px;
 		cursor: pointer;
-		border: none;
 		font-family: 'Nanum Pen Script', cursive;
-		font-size: 22px;
 		text-transform: uppercase;
 		user-select: none;
-		padding: 0;
-		min-width: 30px;
-		max-width: 80px;
-		margin: 0;
 	}
-	.dark {
-		background-color: rgb(49, 49, 49);
-		transition: background-color 500ms linear;
+	.delay {
+		transition: background-color color 500ms linear;
 		transition-delay: var(--bg-delay);
-	}
-	.yellow {
-		background-color: rgb(253, 178, 88);
-		transition: background-color 500ms linear;
-		transition-delay: var(--bg-delay);
-	}
-	.green {
-		background-color: rgb(84, 183, 42);
-		transition: background-color 500ms linear;
-		transition-delay: var(--bg-delay);
-	}
-	.wide {
-		padding: 10px;
 	}
 </style>

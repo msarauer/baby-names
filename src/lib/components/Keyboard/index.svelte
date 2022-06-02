@@ -34,11 +34,12 @@
 		align-items: center;
 		gap: 6px;
 		max-width: 350px;
+		padding-bottom: 10px;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
 		touch-action: manipulation;
-		gap: 3px;
+		gap: 2px;
 	}
 </style>

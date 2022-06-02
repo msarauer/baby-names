@@ -4,7 +4,7 @@
 </script>
 
 <Header />
-<div class="container">
+<div class="container mx-auto px-4">
 	<slot />
 </div>
 
@@ -12,9 +12,5 @@
 	:global(:root) {
 		--boy-color: rgb(191, 243, 245);
 		--girl-color: rgb(220, 36, 177);
-	}
-	.container {
-		max-width: 90%;
-		margin: auto;
 	}
 </style>
