@@ -63,7 +63,7 @@
 			let slug = (Math.random() + 1).toString(36).substring(7);
 			const { data, error } = await supabase
 				.from('babies')
-				.insert([{ babyName: fields.babyName.toLowerCase(), slug }]);
+				.insert([{ babyName: fields.babyName, slug }]);
 			if (error) {
 				return console.error(error);
 			}
@@ -80,12 +80,7 @@
 			<a href={url}>{window.location.origin}{url}</a>
 		</div>
 	{:else}
-		<Input
-			name="babyName"
-			field={fields.babyName}
-			error={errors.babyName}
-			label="Please enter the name of your new baby:"
-		/>
+		<Input name="babyName" {fields} {errors} label="Please enter the name of your new baby:" />
 		<div class="">
 			<label class="label" for="gender">Please select the gender of the new baby:</label>
 			<select name="gender" class="select" bind:value={fields.gender}>
@@ -133,17 +128,8 @@
 				<div class="errors">{errors.weight}</div>
 			</fieldset>
 		</div>
-		<Input
-			name="parent1"
-			field={fields.parent1}
-			error={errors.parent1}
-			label="Please enter your name:"
-		/>
-		<Input
-			name="parent2"
-			field={fields.parent2}
-			label="Please enter your partner's name (optional):"
-		/>
+		<Input name="parent1" {fields} {errors} label="Please enter your name:" />
+		<Input name="parent2" {fields} {errors} label="Please enter your partner's name (optional):" />
 		<div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea

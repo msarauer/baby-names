@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { guessHistory, answerKey } from '../../stores/stores';
-	import { fade } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 	import { seeds } from '../../data/randomSeed';
-	export let letter: string = '';
+
 	export let incorrect: boolean = false;
 	export let partial: boolean = false;
 	export let correct: boolean = false;
@@ -32,19 +32,17 @@
 	const bgImage = `url('${BgUrl}')`;
 </script>
 
-{#if $guessHistory[row]}
+{#if $guessHistory[row]?.guess[column]}
 	<div class="letter-box" style="--bg-image:{bgImage}; --bg-status:{bgStatus}">
 		{#if partial || correct || incorrect}
 			<div class="check" transition:fade={{ delay: transition, duration: 150 }} />
 		{/if}
-		<div class="letter">
-			{$guessHistory[row].guess[column] ?? ''}
+		<div class="letter" in:scale={{ start: 2 }}>
+			{$guessHistory[row].guess[column]}
 		</div>
 	</div>
 {:else}
-	<div class="letter-box-empty" style="--bg-image:{bgImage}; --bg-status:{bgStatus};">
-		{letter}
-	</div>
+	<div class="letter-box-empty" style="--bg-image:{bgImage}; --bg-status:{bgStatus};" />
 {/if}
 
 <style>

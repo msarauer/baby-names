@@ -11,7 +11,7 @@
 				error: new Error('Could not find the game')
 			};
 		}
-		answerKey.set(createAnswerKey(data[0].babyName));
+		answerKey.set(createAnswerKey(data[0].babyName.toLowerCase()));
 		return {
 			props: {
 				game: data[0].babyName
@@ -42,6 +42,5 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		height: calc(100vh - 200px);
 	}
 </style>

@@ -34,9 +34,9 @@
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">
-	<button on:click={handleClick} class=" delay kbd md:text-[22px] {colorKey[colorCode]}"
-		>{letter}</button
-	>
+	<button on:click={handleClick} class=" delay kbd md:text-[22px] {colorKey[colorCode]}">
+		{letter}
+	</button>
 </div>
 
 <style>

@@ -2,6 +2,7 @@
 	import Row from './Row.svelte';
 	import { answerKey } from '../../stores/stores';
 	import Balloons from '$lib/components/Balloons/index.svelte';
+	import Success from '$lib/components/Modal/Success.svelte';
 
 	export let delay: number;
 
@@ -30,7 +31,7 @@
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
 	{#if winner}
-		You win!!!
+		<Success />
 	{:else if loser}
 		You Lose!!!
 	{/if}
