@@ -61,9 +61,7 @@
 
 		if (valid) {
 			let slug = (Math.random() + 1).toString(36).substring(7);
-			const { data, error } = await supabase
-				.from('babies')
-				.insert([{ babyName: fields.babyName, slug }]);
+			const { data, error } = await supabase.from('babies').insert([{ ...fields, slug }]);
 			if (error) {
 				return console.error(error);
 			}
@@ -73,7 +71,7 @@
 	};
 </script>
 
-<form class="form-control" on:submit|preventDefault={handleSubmit}>
+<form class="form-control text-2xl" on:submit|preventDefault={handleSubmit}>
 	{#if submitted}
 		<div class="congrats">
 			<p>Congrats on the new baby! Please share this link with your friends and family:</p>
@@ -107,7 +105,7 @@
 							type="number"
 							min="1"
 							max="20"
-							class="input max-w-[80px]"
+							class="input max-w-[80px] mr-1"
 							bind:value={fields.lbs}
 						/>
 						lbs
@@ -119,7 +117,7 @@
 							type="number"
 							min="0"
 							max="15.99"
-							class="input max-w-[80px]"
+							class="input max-w-[80px] mr-1"
 							bind:value={fields.oz}
 						/>
 						oz

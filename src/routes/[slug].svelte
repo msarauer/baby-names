@@ -1,17 +1,23 @@
 <script lang="ts" context="module">
 	// import type {Load} from '@sveltejs/kit'
 	import { createAnswerKey } from '$lib/functions/createAnswerKey';
-	import { answerKey } from '$lib/stores/stores';
+	import { answerKey, babyDetails } from '$lib/stores/stores';
 	import { supabase } from '../supabase';
 	export async function load({ params }) {
 		const slug = params.slug;
-		const { data, error } = await supabase.from('babies').select('babyName').eq('slug', slug);
+		const { data, error } = await supabase
+			.from('babies')
+			.select('babyName, birthday, gender, lbs, message, otherNames, oz, parent1, parent2, weight')
+			.eq('slug', slug);
 		if (error) {
 			return {
 				error: new Error('Could not find the game')
 			};
 		}
-		answerKey.set(createAnswerKey(data[0].babyName.toLowerCase()));
+		const result = data[0];
+
+		answerKey.set(createAnswerKey(result.babyName.toLowerCase()));
+		babyDetails.set({ ...result });
 		return {
 			props: {
 				game: data[0].babyName

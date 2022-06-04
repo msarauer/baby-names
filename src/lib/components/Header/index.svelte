@@ -1,5 +1,5 @@
 <header>
-	<div class="navbar bg-base-100">
+	<div class="navbar bg-base-100 border-b">
 		<div class="navbar-start">
 			<div class="dropdown">
 				<label tabindex="0" class="btn btn-ghost btn-circle">

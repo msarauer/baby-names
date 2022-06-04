@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { clickOutside } from './clickOutside.js';
+	import { babyDetails } from '$lib/stores/stores';
 
 	export let isSuccessOpen = true;
 </script>
@@ -20,10 +21,16 @@
 			}}>✕</button
 		>
 		<h3 class="font-bold text-3xl">You figured it out!</h3>
-		<p class="py-4">
-			Dale and Denise are super excited to introduce their new baby boy, Mitchel Alexander Sarauer!
+		<p class="py-4 text-2xl">
+			{$babyDetails.parent1}
+			{$babyDetails.parent2 ? ' and ' + $babyDetails.parent2 + ' are' : ' is'} super excited to introduce
+			their new baby {$babyDetails.gender}, {$babyDetails.babyName}
+			{$babyDetails.otherNames ?? ''}!
 		</p>
-		<p class="py-4">Born May 1, 2022 and weighing 11 lb 12 oz.</p>
+		<p class="py-4 text-2xl">
+			Born May 1, 2022 {$babyDetails.weight &&
+				' and weighing ' + $babyDetails.lbs + ' lbs - ' + $babyDetails.oz + ' oz'}.
+		</p>
 		<!-- <div class="modal-action">
 			<button class="btn btn-secondary">Yay!</button>
 		</div> -->

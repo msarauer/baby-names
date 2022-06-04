@@ -11,21 +11,22 @@ html {
 	color: #444444;
 	margin: 0;
 	box-sizing: border-box;
+	@apply bg-base-100;
 }
 * {
 	box-sizing: inherit;
 }
 
 .input {
-	@apply input-secondary w-full;
+	@apply input-secondary w-full text-2xl;
 }
 
 .textarea {
-	@apply textarea-secondary w-full;
+	@apply textarea-secondary w-full text-2xl;
 }
 
 .select {
-	@apply select-secondary w-full;
+	@apply select-secondary w-full text-2xl;
 }
 
 @keyframes float {
