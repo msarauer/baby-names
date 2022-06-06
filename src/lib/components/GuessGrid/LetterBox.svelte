@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { guessHistory, answerKey } from '../../stores/stores';
+	import { guessHistory } from '../../stores/stores';
 	import { fade, scale } from 'svelte/transition';
 	import { seeds } from '../../data/randomSeed';
 
@@ -42,7 +42,10 @@
 		</div>
 	</div>
 {:else}
-	<div class="letter-box-empty" style="--bg-image:{bgImage}; --bg-status:{bgStatus};" />
+	<div class="letter-box-empty flex-col" style="--bg-image:{bgImage}; --bg-status:{bgStatus};">
+		<!-- <span class="">i</span>
+		<span>L</span> -->
+	</div>
 {/if}
 
 <style>
@@ -75,6 +78,11 @@
 		z-index: 1;
 	}
 	.letter-box-empty {
+		display: flex;
+		/* justify-content: center; */
+		/* align-items: center; */
+		font-size: 200%;
+		color: rgba(72, 186, 56, 0.732);
 		min-width: calc(100% / 9);
 		width: 100%;
 		min-height: 100%;

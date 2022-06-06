@@ -10,9 +10,6 @@
 	export let delay: number;
 	export let resultKey: ResultKey = { key: '', correct: false };
 
-	interface letterObj {
-		[key: string]: string;
-	}
 	$: {
 		if ($guessHistory[row]?.complete) {
 			const guessKey = $guessHistory[row].guess;
@@ -40,7 +37,7 @@
 	}
 </script>
 
-<div class="guess-row" style="--max-width:{$answerKey.answer.length * 60}px">
+<div class="guess-row" style="--num-chars:{$answerKey.answer.length}">
 	{#each $answerKey.answer as letter, column}
 		<LetterBox
 			{column}
@@ -56,10 +53,10 @@
 <style>
 	.guess-row {
 		display: flex;
-		width: var(--max-width);
-		max-width: 90vw;
-		min-height: 40px;
+		width: calc(var(--num-chars) * 60px);
+		max-width: 80vw;
 		height: 60px;
+		max-height: calc(90vw / var(--num-chars));
 		justify-content: space-between;
 	}
 </style>
