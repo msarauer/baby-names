@@ -47,7 +47,7 @@
 		user-select: none;
 	}
 	.delay {
-		transition: background-color color 500ms linear;
+		transition: all 500ms linear;
 		transition-delay: var(--bg-delay);
 	}
 </style>
