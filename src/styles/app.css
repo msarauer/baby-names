@@ -1,7 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Nanum+Pen+Script&display=swap');
 
-body {
-	background-color: rgb(40, 40, 40);
-	font-family: 'Roboto';
-	color: whitesmoke;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+	background-color: #ffffff;
+	font-family: 'Nanum Pen Script', cursive;
+	color: #444444;
+	margin: 0;
+	box-sizing: border-box;
+	@apply bg-base-100;
+}
+* {
+	box-sizing: inherit;
+}
+
+.input {
+	@apply input-secondary w-full text-2xl;
+}
+
+.textarea {
+	@apply textarea-secondary w-full text-2xl;
+}
+
+.select {
+	@apply select-secondary w-full text-2xl;
+}
+
+@keyframes float {
+	from {
+		transform: translateY(100vh);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(-300vh);
+		opacity: 0;
+	}
 }

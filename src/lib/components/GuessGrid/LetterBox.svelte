@@ -1,51 +1,108 @@
 <script lang="ts">
-	export let letter: string = '';
-	export let tbd: boolean = false;
+	import { guessHistory } from '../../stores/stores';
+	import { fade, scale } from 'svelte/transition';
+	import { seeds } from '../../data/randomSeed';
+
 	export let incorrect: boolean = false;
 	export let partial: boolean = false;
 	export let correct: boolean = false;
-
 	export let column: number;
 	export let row: number;
+	export let delay: number;
+	//using predictable seeds so that the server and client rendering are the same (they were different with Math.random())
+	export let randBg = seeds[row][column];
 
-	import { guessHistory } from '../../stores/stores';
+	let color = '';
+	let bgStatus: string;
+	let BgStatusUrl: string;
+	let transition: number;
+	$: {
+		if (partial) {
+			color = 'orange';
+		} else if (correct) {
+			color = 'green';
+		} else if (incorrect) {
+			color = 'grey';
+		}
+		BgStatusUrl = `/assets/${color}.png`;
+		bgStatus = `url('${BgStatusUrl}')`;
+		transition = column * delay;
+	}
+	let BgUrl = `/assets/sq${randBg}.png`;
+	const bgImage = `url('${BgUrl}')`;
 </script>
 
-{#if $guessHistory[row]}
-	<div class:tbd class:incorrect class:partial class:correct class="letter-box">
-		{$guessHistory[row].guess[column] ?? ''}
+{#if $guessHistory[row]?.guess[column]}
+	<div class="letter-box" style="--bg-image:{bgImage}; --bg-status:{bgStatus}">
+		{#if partial || correct || incorrect}
+			<div class="check" transition:fade={{ delay: transition, duration: 150 }} />
+		{/if}
+		<div class="letter" in:scale={{ start: 2 }}>
+			{$guessHistory[row].guess[column]}
+		</div>
 	</div>
 {:else}
-	<div class:tbd class:incorrect class:partial class:correct class="letter-box">{letter}</div>
+	<div class="letter-box-empty flex-col" style="--bg-image:{bgImage}; --bg-status:{bgStatus};">
+		<!-- <span class="">i</span>
+		<span>L</span> -->
+	</div>
 {/if}
 
 <style>
 	.letter-box {
-		outline: 2px solid rgb(101, 101, 101);
-		width: 60px;
-		height: 60px;
-		font-size: 40px;
+		min-width: calc(100% / 9);
+		width: 100%;
+		font-size: 200%;
+		font-family: 'Nanum Pen Script', cursive;
+		background-image: var(--bg-image);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-transform: uppercase;
+		position: relative;
+		color: rgb(0, 0, 0);
 	}
-
-	.tbd {
+	.check {
+		background-image: var(--bg-status);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 60px;
+		height: 100%;
+		position: absolute;
 	}
-
-	.incorrect {
-		background-color: rgb(78, 78, 78);
-		outline: none;
+	.letter {
+		z-index: 1;
 	}
-
-	.partial {
-		background-color: rgb(172, 95, 165);
-		outline: none;
+	.letter-box-empty {
+		display: flex;
+		/* justify-content: center; */
+		/* align-items: center; */
+		font-size: 200%;
+		color: rgba(72, 186, 56, 0.732);
+		min-width: calc(100% / 9);
+		width: 100%;
+		min-height: 100%;
+		background-image: var(--bg-image);
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
 	}
-
-	.correct {
-		background-color: rgb(50, 107, 153);
-		outline: none;
+	@keyframes flip {
+		0% {
+			transform: rotateX(0);
+		}
+		45% {
+			transform: rotateX(90deg);
+		}
+		55% {
+			transform: rotateX(90deg);
+		}
+		100% {
+			transform: rotateX(0);
+		}
 	}
 </style>

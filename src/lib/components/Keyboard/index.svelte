@@ -1,22 +1,26 @@
 <script lang="ts">
 	import Key from './Key.svelte';
-	const letters: string[] = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+	import { letters } from '../../stores/stores';
+
+	const lets = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+
+	export let delay: number;
 </script>
 
 <div class="keyboard">
-	{#each letters as row, i}
-		{#if i === letters.length - 1}
+	{#each lets as row, i}
+		{#if i === 2}
 			<div class="row">
 				<Key letter="enter" />
 				{#each row as letter}
-					<Key {letter} />
+					<Key {letter} {delay} colorCode={$letters[letter]} />
 				{/each}
 				<Key letter="del" />
 			</div>
 		{:else}
 			<div class="row">
 				{#each row as letter}
-					<Key {letter} />
+					<Key {letter} {delay} colorCode={$letters[letter]} />
 				{/each}
 			</div>
 		{/if}
@@ -27,12 +31,15 @@
 	.keyboard {
 		display: flex;
 		flex-direction: column;
-		margin-top: 3em;
-		gap: 0.5em;
+		align-items: center;
+		gap: 6px;
+		max-width: 350px;
+		padding-bottom: 10px;
 	}
 	.row {
 		display: flex;
 		justify-content: center;
-		gap: 0.3em;
+		touch-action: manipulation;
+		gap: 2px;
 	}
 </style>

@@ -1,36 +1,53 @@
 <script lang="ts">
-	export let letter: string;
 	import { answerKey, guessHistory } from '../../stores/stores';
+
+	export let letter: string;
+	export let colorCode: string = '';
+	export let delay: number = 0;
+
+	const colorKey: {
+		[key: string]: string;
+	} = {
+		'1': 'bg-base-content text-base-100',
+		'2': 'bg-warning text-warning-content',
+		'3': 'bg-success text-success-content'
+	};
 
 	const handleClick = () => {
 		if (letter === 'enter') {
 			if ($answerKey.answer.length === $guessHistory.at(-1)?.guess.length) {
-				$guessHistory.at(-1).complete = true;
+				$guessHistory.at(-1)!.complete = true;
 				$guessHistory = [...$guessHistory, { guess: '', complete: false }];
 			}
-		} else {
-			$guessHistory.at(-1).guess += letter;
+		} else if (letter === 'del') {
+			$guessHistory.at(-1)!.guess = $guessHistory.at(-1)!.guess.slice(0, -1);
+			//This line is necessary to trigger a re-render
 			$guessHistory = $guessHistory;
+		} else {
+			if ($guessHistory.at(-1)!.guess.length < $answerKey.answer.length) {
+				$guessHistory.at(-1)!.guess += letter;
+				//This line is necessary to trigger a re-render
+				$guessHistory = $guessHistory;
+			}
 		}
 	};
 </script>
 
-<button on:click={handleClick}>{letter}</button>
+<div style="--bg-delay: {delay * $answerKey.answer.length}ms">
+	<button on:click={handleClick} class=" delay kbd md:text-[22px] {colorKey[colorCode]}">
+		{letter}
+	</button>
+</div>
 
 <style>
 	button {
-		background-color: rgb(122, 122, 122);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		border-radius: 7px;
-		min-width: 38px;
-		height: 48px;
 		cursor: pointer;
-		border: none;
-		font-family: 'Roboto';
-		font-size: 14px;
+		font-family: 'Nanum Pen Script', cursive;
 		text-transform: uppercase;
+		user-select: none;
+	}
+	.delay {
+		transition: all 500ms linear;
+		transition-delay: var(--bg-delay);
 	}
 </style>
