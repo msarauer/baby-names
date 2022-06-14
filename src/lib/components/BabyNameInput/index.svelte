@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { supabase } from '../../../supabase';
 	import Input from './Input.svelte';
+	import SharePage from './SharePage.svelte';
 
 	let fields = {
 		babyName: '',
@@ -73,11 +74,9 @@
 
 <form class="form-control text-2xl" on:submit|preventDefault={handleSubmit}>
 	{#if submitted}
-		<div class="congrats">
-			<p>Congrats on the new baby! Please share this link with your friends and family:</p>
-			<a href={url}>{window.location.origin}{url}</a>
-		</div>
+		<SharePage {url} />
 	{:else}
+		<h2 class="text-6xl">Tell us about your new baby.</h2>
 		<Input name="babyName" {fields} {errors} label="Please enter the name of your new baby:" />
 		<div class="">
 			<label class="label" for="gender">Please select the gender of the new baby:</label>
