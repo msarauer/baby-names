@@ -1,13 +1,20 @@
-<script>
+<script lang="ts">
 	import FaShareAlt from 'svelte-icons/fa/FaShareAlt.svelte';
 	import MdErrorOutline from 'svelte-icons/md/MdErrorOutline.svelte';
+
+	export let parent1 = '';
+	export let parent2 = '';
+
+	let text = parent2
+		? `${parent1} and ${parent2}'s Babidle baby announcement`
+		: `${parent1}'s Babidle baby announcement`;
 
 	let errorMessage = false;
 
 	const shareData = {
-		title: 'MDN',
-		text: 'Learn web development on MDN!',
-		url: 'https://developer.mozilla.org'
+		title: 'Babidle, a fun way to announce your new baby!',
+		text,
+		url: window.location.href
 	};
 
 	const handleClick = async () => {

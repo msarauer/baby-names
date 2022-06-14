@@ -25,6 +25,6 @@
 			: ''}.
 	</p>
 	<div class="modal-action">
-		<ShareButtons />
+		<ShareButtons parent1={$babyDetails.parent1} parent2={$babyDetails.parent2} />
 	</div>
 </div>
