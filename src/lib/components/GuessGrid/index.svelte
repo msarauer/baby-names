@@ -21,7 +21,7 @@
 	const handleLose = () => {
 		setTimeout(() => {
 			$gameOver = true;
-			loser = true;
+			$openModal.fail = true;
 		}, delay * $answerKey.answer.length);
 	};
 </script>
@@ -34,6 +34,7 @@
 	{/each}
 	<!-- {#if $openModal.success} -->
 	<Modal content="Success" isOpen={$openModal.success} />
+	<Modal content="Fail" isOpen={$openModal.fail} />
 	<!-- {:else if loser}
 		You Lose!!!
 	{/if} -->
