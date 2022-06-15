@@ -5,22 +5,35 @@
 	const lets = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 
 	export let delay: number;
+
+	let key: string;
+
+	function handleKeydown(event) {
+		key = event.key === 'Backspace' ? 'del' : event.key.toLowerCase();
+	}
 </script>
+
+<svelte:window
+	on:keydown={handleKeydown}
+	on:keyup={() => {
+		key = '';
+	}}
+/>
 
 <div class="keyboard">
 	{#each lets as row, i}
 		{#if i === 2}
 			<div class="row">
-				<Key letter="enter" />
+				<kbd> <Key letter="enter" {key} /></kbd>
 				{#each row as letter}
-					<Key {letter} {delay} colorCode={$letters[letter]} />
+					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} /></kbd>
 				{/each}
-				<Key letter="del" />
+				<kbd><Key letter="del" {key} /></kbd>
 			</div>
 		{:else}
 			<div class="row">
 				{#each row as letter}
-					<Key {letter} {delay} colorCode={$letters[letter]} />
+					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} /></kbd>
 				{/each}
 			</div>
 		{/if}

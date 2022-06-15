@@ -1,3 +1,8 @@
+<script lang="ts">
+	import { gameOver } from '$lib/stores/stores';
+	import GiChest from 'svelte-icons/gi/GiChest.svelte';
+</script>
+
 <header>
 	<div class="navbar bg-base-100 border-b">
 		<div class="navbar-start">
@@ -28,23 +33,13 @@
 			</div>
 		</div>
 		<div class="navbar-center">
-			<h1 class="text-3xl">BABY NAMES</h1>
+			<h1 class="text-3xl">BABIDLE</h1>
 		</div>
+
 		<div class="navbar-end">
+			<div class="h-1 w-1" />
 			<button class="btn btn-ghost btn-circle">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-					/></svg
-				>
+				<GiChest />
 			</button>
 			<button class="btn btn-ghost btn-circle">
 				<div class="indicator">

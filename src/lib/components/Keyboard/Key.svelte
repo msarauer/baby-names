@@ -4,6 +4,7 @@
 	export let letter: string;
 	export let colorCode: string = '';
 	export let delay: number = 0;
+	export let key: string;
 
 	const colorKey: {
 		[key: string]: string;
@@ -31,6 +32,11 @@
 			}
 		}
 	};
+	$: {
+		if (key === letter) {
+			handleClick();
+		}
+	}
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">

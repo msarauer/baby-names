@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LetterBox from './LetterBox.svelte';
-	import { guessHistory, answerKey, letters } from '../../stores/stores';
+	import { guessHistory, answerKey, letters, gameOver } from '../../stores/stores';
 	import { checkGuess } from '$lib/functions/checkGuess';
 
 	import { createEventDispatcher } from 'svelte';
@@ -28,10 +28,12 @@
 			}
 			if (resultKey.correct) {
 				dispatch('win');
+				$gameOver = true;
 			}
 			// if you submit on last row without winning, dispatch lose event
 			if ($answerKey.guesses - 1 === row) {
 				dispatch('lose');
+				$gameOver = true;
 			}
 		}
 	}
