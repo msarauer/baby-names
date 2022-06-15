@@ -8,7 +8,7 @@
 		[key: string]: any;
 	}
 
-	export let isSuccessOpen = true;
+	export let isOpen: boolean;
 	export let content: string;
 
 	const components: obj = {
@@ -16,12 +16,12 @@
 	};
 </script>
 
-<div class="modal" class:modal-open={isSuccessOpen}>
+<div class="modal" class:modal-open={isOpen}>
 	<div
 		class="modal-box"
 		use:clickOutside
 		on:click_outside={() => {
-			isSuccessOpen = false;
+			isOpen = false;
 		}}
 	>
 		<div
@@ -50,7 +50,7 @@
 			for="my-modal-3"
 			class="btn btn-secondary btn-sm btn-circle absolute right-2 top-2"
 			on:click={() => {
-				isSuccessOpen = false;
+				isOpen = false;
 			}}>✕</button
 		>
 		<svelte:component this={components[content]} />

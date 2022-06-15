@@ -6,6 +6,8 @@ export const answerKey = writable({ answer: '', guesses: 0 });
 
 export const gameOver = writable(false);
 
+export const openModal = writable({ success: false });
+
 export const babyDetails = writable({
 	babyName: '',
 	birthday: null,

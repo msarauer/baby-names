@@ -1,24 +1,26 @@
 <script lang="ts">
 	import Row from './Row.svelte';
-	import { answerKey } from '../../stores/stores';
+	import { answerKey, gameOver, openModal } from '../../stores/stores';
 	import Balloons from '$lib/components/Balloons/index.svelte';
 	import Modal from '$lib/components/Modal/Modal.svelte';
 
 	export let delay: number;
 
 	let showBalloons = false;
-	let winner = false;
+
 	let loser = false;
 
 	const handleWin = () => {
 		setTimeout(() => {
-			winner = true;
+			$openModal.success = true;
 			showBalloons = true;
+			$gameOver = true;
 		}, delay * $answerKey.answer.length);
 	};
 
 	const handleLose = () => {
 		setTimeout(() => {
+			$gameOver = true;
 			loser = true;
 		}, delay * $answerKey.answer.length);
 	};
@@ -30,11 +32,11 @@
 	{#each Array($answerKey.guesses) as item, row}
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
-	{#if winner}
-		<Modal content="Success" />
-	{:else if loser}
+	<!-- {#if $openModal.success} -->
+	<Modal content="Success" isOpen={$openModal.success} />
+	<!-- {:else if loser}
 		You Lose!!!
-	{/if}
+	{/if} -->
 </div>
 
 <style>

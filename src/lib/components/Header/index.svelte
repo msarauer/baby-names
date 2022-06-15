@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { gameOver } from '$lib/stores/stores';
+	import { gameOver, openModal } from '$lib/stores/stores';
 	import GiChest from 'svelte-icons/gi/GiChest.svelte';
 </script>
 
@@ -37,10 +37,16 @@
 		</div>
 
 		<div class="navbar-end">
-			<div class="h-1 w-1" />
-			<button class="btn btn-ghost btn-circle">
-				<GiChest />
-			</button>
+			{#if $gameOver}
+				<button
+					class="btn btn-ghost btn-circle z-10"
+					on:click={() => {
+						$openModal.success = true;
+					}}
+				>
+					<GiChest />
+				</button>
+			{/if}
 			<button class="btn btn-ghost btn-circle">
 				<div class="indicator">
 					<svg
