@@ -8,17 +8,17 @@
 	export let name: string;
 	export let label: string;
 
-	console.log('here', fields);
+	console.log(name in Object.keys(errors));
 </script>
 
-<div>
-	<label class="label" for={name}>{label}</label>
+<div class="">
+	<label class="label pb-0" for={name}>{label}</label>
 	<input
-		class="p-2 border-x-0 border-t-0 rounded-none border-b-2 border-b-secondary bg-transparent focus:outline-none focus:border-b-2 focus:border-b-primary focus:border-l-2 focus:border-l-primary"
+		class="w-full px-2 rounded-none border-2 border-secondary bg-transparent"
 		{name}
 		bind:value={fields[name]}
 	/>
-	{#if name in Object.keys(errors)}
-		<div class="text-error ">{errors[name]}</div>
+	{#if errors[name]}
+		<div class="text-error">{errors[name]}</div>
 	{/if}
 </div>

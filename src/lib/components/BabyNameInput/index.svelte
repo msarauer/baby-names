@@ -72,42 +72,41 @@
 	};
 </script>
 
-<form class="form-control text-2xl" on:submit|preventDefault={handleSubmit}>
+<form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
 	{#if submitted}
 		<SharePage {url} />
 	{:else}
-		<h2 class="text-6xl">Tell us about your new baby.</h2>
-		<Input name="babyName" {fields} {errors} label="Please enter the name of your new baby:" />
-		<div class="">
-			<label class="label" for="gender">Please select the gender of the new baby:</label>
-
-			<div class="btn-group">
-				<input
-					type="radio"
-					name="gender"
-					value="Boy"
-					data-title="Boy"
-					class="btn btn-primary"
-					bind:group={fields.gender}
-					checked
-				/>
-				<input
-					type="radio"
-					name="gender"
-					value="Girl"
-					data-title="Girl"
-					class="btn"
-					bind:group={fields.gender}
-				/>
+		<h2 class="text-5xl">Tell us about your new baby.</h2>
+		<Input name="babyName" {fields} {errors} label="Baby's First Name" />
+		<div>
+			<div class="flex">
+				<label class="label" for="gender">Baby's gender</label>
+				<div class="btn-group">
+					<input
+						type="radio"
+						name="gender"
+						value="Boy"
+						data-title="Boy"
+						class="btn"
+						bind:group={fields.gender}
+						checked
+					/>
+					<input
+						type="radio"
+						name="gender"
+						value="Girl"
+						data-title="Girl"
+						class="btn"
+						bind:group={fields.gender}
+					/>
+				</div>
 			</div>
-
-			<div class="errors">{errors.gender}</div>
+			<div class="text-error">{errors.gender}</div>
 		</div>
-		<div class="">
-			<fieldset>
-				<legend>Check the box to enter the babies birth weight (optional):</legend>
+		<div>
+			<fieldset class="flex">
 				<label class="label flex justify-start"
-					>Enter weight?<input
+					>Show birth weight?*<input
 						class="checkbox checkbox-secondary ml-1"
 						type="checkbox"
 						bind:checked={fields.weight}
@@ -142,8 +141,8 @@
 				<div class="errors">{errors.weight}</div>
 			</fieldset>
 		</div>
-		<Input name="parent1" {fields} {errors} label="Please enter your name:" />
-		<Input name="parent2" {fields} {errors} label="Please enter your partner's name (optional):" />
+		<Input name="parent1" {fields} {errors} label="Your First Name" />
+		<Input name="parent2" {fields} {errors} label="Your Partner's First Name*" />
 		<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea
@@ -153,7 +152,7 @@
 				bind:value={fields.message}
 			/>
 		</div> -->
-		<button class="btn btn-secondary" type="submit">Submit</button>
+		<button class="btn btn-secondary my-3" type="submit">Submit</button>
 	{/if}
 </form>
 

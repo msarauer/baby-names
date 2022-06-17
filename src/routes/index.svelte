@@ -2,7 +2,7 @@
 	import BabyNameInput from '$lib/components/BabyNameInput/index.svelte';
 </script>
 
-<div>
+<div class="">
 	<BabyNameInput />
 </div>
 

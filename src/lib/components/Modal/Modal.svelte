@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { clickOutside } from './clickOutside.js';
-	import { Confetti } from 'svelte-confetti';
 
 	import Success from './Success.svelte';
 	import Fail from './Fail.svelte';
@@ -26,30 +25,7 @@
 			isOpen = false;
 		}}
 	>
-		{#if content === 'Success'}
-			<div
-				style="
-					position: fixed;
-					top: -50px;
-					left: 0;
-					height: 100%;
-					width: 100%;
-					display: flex;
-					justify-content: center;
-					overflow: hidden;
-					pointer-events: none;"
-			>
-				<Confetti
-					x={[-5, 5]}
-					y={[0, 0.1]}
-					delay={[500, 2000]}
-					duration="5000"
-					amount="300"
-					fallDistance="100vh"
-					infinite
-				/>
-			</div>
-		{/if}
+		<svelte:component this={components[content]} />
 		<button
 			for="my-modal-3"
 			class="btn btn-secondary btn-sm btn-circle absolute right-2 top-2"
@@ -57,6 +33,5 @@
 				isOpen = false;
 			}}>✕</button
 		>
-		<svelte:component this={components[content]} />
 	</div>
 </div>
