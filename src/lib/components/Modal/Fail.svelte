@@ -4,7 +4,7 @@
 </script>
 
 <div class="text-center">
-	<h3 class="text-4xl text-center">Good try.</h3>
+	<h3 class="text-4xl bg-primary rounded-3xl py-4">Good try.</h3>
 	<p class="py-4 text-2xl">
 		<span class="text-4xl text-accent capitalize">{$babyDetails.parent1}</span>
 		{#if $babyDetails.parent2}

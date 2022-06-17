@@ -1,12 +1,25 @@
 <script lang="ts">
 	import Key from './Key.svelte';
-	import { letters } from '../../stores/stores';
+	import { letters, answerKey, gameOver } from '../../stores/stores';
 
 	const lets = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 
 	export let delay: number;
 
 	let key: string;
+
+	let locked = false;
+
+	$: {
+		if ($gameOver === true) locked = true;
+	}
+
+	function handleChecking() {
+		locked = true;
+		setTimeout(() => {
+			locked = false;
+		}, delay * $answerKey.answer.length);
+	}
 
 	function handleKeydown(event) {
 		key = event.key === 'Backspace' ? 'del' : event.key.toLowerCase();
@@ -24,16 +37,16 @@
 	{#each lets as row, i}
 		{#if i === 2}
 			<div class="row">
-				<kbd> <Key letter="enter" {key} /></kbd>
+				<kbd> <Key letter="enter" {key} {locked} on:checking={handleChecking} /></kbd>
 				{#each row as letter}
-					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} /></kbd>
+					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} {locked} /></kbd>
 				{/each}
-				<kbd><Key letter="del" {key} /></kbd>
+				<kbd><Key letter="del" {key} {locked} /></kbd>
 			</div>
 		{:else}
 			<div class="row">
 				{#each row as letter}
-					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} /></kbd>
+					<kbd><Key {letter} {delay} colorCode={$letters[letter]} {key} {locked} /></kbd>
 				{/each}
 			</div>
 		{/if}

@@ -80,10 +80,27 @@
 		<Input name="babyName" {fields} {errors} label="Please enter the name of your new baby:" />
 		<div class="">
 			<label class="label" for="gender">Please select the gender of the new baby:</label>
-			<select name="gender" class="select" bind:value={fields.gender}>
-				<option>Boy</option>
-				<option>Girl</option>
-			</select>
+
+			<div class="btn-group">
+				<input
+					type="radio"
+					name="gender"
+					value="Boy"
+					data-title="Boy"
+					class="btn btn-primary"
+					bind:group={fields.gender}
+					checked
+				/>
+				<input
+					type="radio"
+					name="gender"
+					value="Girl"
+					data-title="Girl"
+					class="btn"
+					bind:group={fields.gender}
+				/>
+			</div>
+
 			<div class="errors">{errors.gender}</div>
 		</div>
 		<div class="">
@@ -127,7 +144,7 @@
 		</div>
 		<Input name="parent1" {fields} {errors} label="Please enter your name:" />
 		<Input name="parent2" {fields} {errors} label="Please enter your partner's name (optional):" />
-		<div class="">
+		<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea
 				class="textarea textarea-secondary"
@@ -135,7 +152,7 @@
 				name="message"
 				bind:value={fields.message}
 			/>
-		</div>
+		</div> -->
 		<button class="btn btn-secondary" type="submit">Submit</button>
 	{/if}
 </form>

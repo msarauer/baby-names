@@ -58,8 +58,5 @@
 			}}>✕</button
 		>
 		<svelte:component this={components[content]} />
-		<!-- <div class="modal-action">
-			<button class="btn btn-secondary">Yay!</button>
-		</div> -->
 	</div>
 </div>

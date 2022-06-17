@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { answerKey, guessHistory } from '../../stores/stores';
 
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
 	export let letter: string;
 	export let colorCode: string = '';
 	export let delay: number = 0;
 	export let key: string;
+
+	export let locked: boolean;
 
 	const colorKey: {
 		[key: string]: string;
@@ -17,6 +22,8 @@
 	const handleClick = () => {
 		if (letter === 'enter') {
 			if ($answerKey.answer.length === $guessHistory.at(-1)?.guess.length) {
+				dispatch('checking');
+
 				$guessHistory.at(-1)!.complete = true;
 				$guessHistory = [...$guessHistory, { guess: '', complete: false }];
 			}
@@ -33,14 +40,18 @@
 		}
 	};
 	$: {
-		if (key === letter) {
+		if (key === letter && !locked) {
 			handleClick();
 		}
 	}
 </script>
 
 <div style="--bg-delay: {delay * $answerKey.answer.length}ms">
-	<button on:click={handleClick} class=" delay kbd md:text-[22px] {colorKey[colorCode]}">
+	<button
+		on:click={handleClick}
+		disabled={locked}
+		class="delay kbd md:text-[22px] {colorKey[colorCode]}"
+	>
 		{letter}
 	</button>
 </div>
