@@ -33,7 +33,7 @@
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
 	<!-- {#if $openModal.success} -->
-	<Modal content="Success" isOpen={$openModal.success} />
+	<Modal content="Success" isOpen={$openModal.success} url={window.location.href} />
 	<Modal content="Fail" isOpen={$openModal.fail} />
 	<!-- {:else if loser}
 		You Lose!!!

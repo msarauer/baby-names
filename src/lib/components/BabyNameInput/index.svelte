@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { supabase } from '../../../supabase';
+	import Modal from '../Modal/Modal.svelte';
 	import Input from './Input.svelte';
-	import SharePage from './SharePage.svelte';
 
 	let fields = {
 		babyName: '',
@@ -72,78 +72,76 @@
 	};
 </script>
 
+<Modal content="ReadyToShare" isOpen={submitted} {url} />
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
-	{#if submitted}
-		<SharePage {url} />
-	{:else}
-		<h2 class="text-5xl">Tell us about your new baby.</h2>
-		<Input name="babyName" {fields} {errors} label="Baby's First Name" />
-		<div>
-			<div class="flex">
-				<label class="label" for="gender">Baby's gender</label>
-				<div class="btn-group">
-					<input
-						type="radio"
-						name="gender"
-						value="Boy"
-						data-title="Boy"
-						class="btn"
-						bind:group={fields.gender}
-						checked
-					/>
-					<input
-						type="radio"
-						name="gender"
-						value="Girl"
-						data-title="Girl"
-						class="btn"
-						bind:group={fields.gender}
-					/>
-				</div>
+	<h2 class="text-5xl">Tell us about your new baby.</h2>
+	<Input name="babyName" {fields} {errors} label="Baby's First Name" />
+	<div>
+		<div class="flex mt-2">
+			<label class="label" for="gender">Baby's gender</label>
+			<div class="btn-group">
+				<input
+					type="radio"
+					name="gender"
+					value="Boy"
+					data-title="Boy"
+					class="btn"
+					bind:group={fields.gender}
+					checked
+				/>
+				<input
+					type="radio"
+					name="gender"
+					value="Girl"
+					data-title="Girl"
+					class="btn"
+					bind:group={fields.gender}
+				/>
 			</div>
-			<div class="text-error">{errors.gender}</div>
 		</div>
-		<div>
-			<fieldset class="flex">
-				<label class="label flex justify-start"
-					>Show birth weight?*<input
-						class="checkbox checkbox-secondary ml-1"
-						type="checkbox"
-						bind:checked={fields.weight}
-					/></label
-				>
-				<div class="weight flex">
-					<label class="label gap-1">
-						<input
-							disabled={!fields.weight}
-							name="lbs"
-							type="number"
-							min="1"
-							max="20"
-							class="input max-w-[80px] mr-1"
-							bind:value={fields.lbs}
-						/>
-						lbs
-					</label>
-					<label class="label">
-						<input
-							disabled={!fields.weight}
-							name="oz"
-							type="number"
-							min="0"
-							max="15.99"
-							class="input max-w-[80px] mr-1"
-							bind:value={fields.oz}
-						/>
-						oz
-					</label>
-				</div>
-				<div class="errors">{errors.weight}</div>
-			</fieldset>
-		</div>
-		<Input name="parent1" {fields} {errors} label="Your First Name" />
-		<Input name="parent2" {fields} {errors} label="Your Partner's First Name*" />
-		<!-- <div class="">
+		<div class="text-error">{errors.gender}</div>
+	</div>
+	<div>
+		<fieldset class="flex">
+			<label class="label flex justify-start"
+				>Show birth weight?*<input
+					class="checkbox checkbox-secondary ml-1"
+					type="checkbox"
+					bind:checked={fields.weight}
+				/></label
+			>
+			<div class="weight flex">
+				<label class="label gap-1">
+					<input
+						disabled={!fields.weight}
+						name="lbs"
+						type="number"
+						min="1"
+						max="20"
+						class="input max-w-[80px] mr-1"
+						bind:value={fields.lbs}
+					/>
+					lbs
+				</label>
+				<label class="label">
+					<input
+						disabled={!fields.weight}
+						name="oz"
+						type="number"
+						min="0"
+						max="15.99"
+						class="input max-w-[80px] mr-1"
+						bind:value={fields.oz}
+					/>
+					oz
+				</label>
+			</div>
+			<div class="errors">{errors.weight}</div>
+		</fieldset>
+	</div>
+	<Input name="parent1" {fields} {errors} label="Your First Name" />
+	<Input name="parent2" {fields} {errors} label="Your Partner's First Name*" />
+	<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea
 				class="textarea textarea-secondary"
@@ -152,8 +150,7 @@
 				bind:value={fields.message}
 			/>
 		</div> -->
-		<button class="btn btn-secondary my-3" type="submit">Submit</button>
-	{/if}
+	<button class="btn btn-secondary my-3" disabled={submitted} type="submit">Submit</button>
 </form>
 
 <style>

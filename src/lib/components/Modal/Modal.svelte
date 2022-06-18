@@ -3,6 +3,9 @@
 
 	import Success from './Success.svelte';
 	import Fail from './Fail.svelte';
+	import HowItWorks from './HowItWorks.svelte';
+	import HowToPlay from './HowToPlay.svelte';
+	import ReadyToShare from './ReadyToShare.svelte';
 
 	interface obj {
 		[key: string]: any;
@@ -10,10 +13,14 @@
 
 	export let isOpen: boolean;
 	export let content: string;
+	export let url: string = '';
 
 	const components: obj = {
 		Success,
-		Fail
+		Fail,
+		HowItWorks,
+		HowToPlay,
+		ReadyToShare
 	};
 </script>
 
@@ -25,7 +32,7 @@
 			isOpen = false;
 		}}
 	>
-		<svelte:component this={components[content]} />
+		<svelte:component this={components[content]} {url} />
 		<button
 			for="my-modal-3"
 			class="btn btn-secondary btn-sm btn-circle absolute right-2 top-2"

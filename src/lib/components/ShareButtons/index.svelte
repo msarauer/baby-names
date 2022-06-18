@@ -4,6 +4,7 @@
 
 	export let parent1 = '';
 	export let parent2 = '';
+	export let url = '';
 
 	let text = parent2
 		? `${parent1} and ${parent2}'s Babidle baby announcement`
@@ -14,7 +15,7 @@
 	const shareData = {
 		title: 'Babidle, a fun way to announce your new baby!',
 		text,
-		url: window.location.href
+		url
 	};
 
 	const handleClick = async () => {
