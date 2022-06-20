@@ -32,12 +32,12 @@
 	{#each Array($answerKey.guesses) as item, row}
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
-	<!-- {#if $openModal.success} -->
-	<Modal content="Success" isOpen={$openModal.success} url={window.location.href} />
+
+	{#if typeof window != 'undefined'}
+		<Modal content="Success" isOpen={$openModal.success} url={window.location.href} />
+	{/if}
+
 	<Modal content="Fail" isOpen={$openModal.fail} />
-	<!-- {:else if loser}
-		You Lose!!!
-	{/if} -->
 </div>
 
 <style>
