@@ -10,6 +10,8 @@ export const openModal = writable({ success: false, fail: false });
 
 export const babyDetails = writable({
 	babyName: '',
+	babyMiddle: '',
+	babyLast: '',
 	birthday: null,
 	gender: '',
 	lbs: null,

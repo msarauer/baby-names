@@ -39,7 +39,8 @@
 		<span class="lowercase"> {$babyDetails.gender},</span>
 		<span class="text-4xl capitalize text-primary underline">
 			{$babyDetails.babyName}
-			{$babyDetails.otherNames ?? 'Dale Sarauer'}!
+			{$babyDetails.babyMiddle}
+			{$babyDetails.babyLast}!
 		</span>
 	</p>
 	<p class="py-4 text-2xl">

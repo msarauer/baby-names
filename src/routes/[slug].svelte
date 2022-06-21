@@ -7,7 +7,9 @@
 		const slug = params.slug;
 		const { data, error } = await supabase
 			.from('babies')
-			.select('babyName, birthday, gender, lbs, message, otherNames, oz, parent1, parent2, weight')
+			.select(
+				'babyName, babyMiddle, babyLast, birthday, gender, lbs, message, otherNames, oz, parent1, parent2, weight'
+			)
 			.eq('slug', slug);
 		if (error) {
 			return {

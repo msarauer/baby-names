@@ -5,6 +5,8 @@
 
 	let fields = {
 		babyName: '',
+		babyMiddle: '',
+		babyLast: '',
 		parent1: '',
 		parent2: '',
 		gender: '',
@@ -13,7 +15,7 @@
 		oz: null,
 		message: ''
 	};
-	let errors = { babyName: '', parent1: '', gender: '', weight: '' };
+	let errors = { babyName: '', babyLast: '', parent1: '', gender: '', weight: '' };
 	let valid = false;
 	let submitted: boolean = false;
 	let url: string;
@@ -31,10 +33,17 @@
 		} else {
 			errors.babyName = '';
 		}
+
+		if (fields.babyLast.trim().length < 1) {
+			valid = false;
+			errors.babyName = 'You must enter a last name for the baby.';
+		} else {
+			errors.babyName = '';
+		}
 		//validate parent name
 		if (fields.parent1.trim().length < 1) {
 			valid = false;
-			errors.parent1 = 'You must enter your name.';
+			errors.parent1 = 'You must enter your first name.';
 		} else {
 			errors.parent1 = '';
 		}
@@ -76,6 +85,8 @@
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
 	<h2 class="text-5xl">Tell us about your new baby.</h2>
 	<Input name="babyName" {fields} {errors} label="Baby's First Name" />
+	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name*" />
+	<Input name="babyLast" {fields} {errors} label="Baby's Last Name" />
 	<div>
 		<div class="flex mt-2">
 			<label class="label" for="gender">Baby's gender</label>
