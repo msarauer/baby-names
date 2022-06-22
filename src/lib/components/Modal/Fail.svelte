@@ -13,17 +13,19 @@
 			is
 		{/if}
 		super excited to introduce their new baby
-		<span class="lowercase">
-			{$babyDetails.gender},
-			<span class="text-4xl capitalize text-primary underline">{$babyDetails.babyName}</span>
-			{$babyDetails.otherNames ?? 'Dale Sarauer'}
-		</span>!
+		<span class="lowercase"> {$babyDetails.gender},</span>
+		<span class="text-4xl capitalize text-primary underline">
+			{$babyDetails.babyName}
+			{$babyDetails.babyMiddle}
+			{$babyDetails.babyLast}!
+		</span>
 	</p>
 	<p class="py-4 text-2xl">
 		Born May 1, 2022{$babyDetails.weight
 			? ' and weighing ' + $babyDetails.lbs + ' lbs - ' + $babyDetails.oz + ' oz'
 			: ''}.
 	</p>
+
 	<div class="modal-action">
 		<ShareButtons parent1={$babyDetails.parent1} parent2={$babyDetails.parent2} />
 	</div>
