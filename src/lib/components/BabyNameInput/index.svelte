@@ -2,6 +2,7 @@
 	import { supabase } from '../../../supabase';
 	import Modal from '../Modal/Modal.svelte';
 	import Input from './Input.svelte';
+	import validate from './Validation';
 
 	let fields = {
 		babyName: '',
@@ -23,51 +24,11 @@
 	const handleSubmit = async () => {
 		valid = true;
 
-		//validate baby name
-		if (fields.babyName.trim().length > 9) {
-			valid = false;
-			errors.babyName = 'Unfortunately, we dont suppport names longer than 9 letters at this time.';
-		} else if (fields.babyName.trim().length < 1) {
-			valid = false;
-			errors.babyName = 'You must enter a name for the baby.';
-		} else {
-			errors.babyName = '';
-		}
+		const validation = validate(fields, errors);
 
-		if (fields.babyLast.trim().length < 1) {
-			valid = false;
-			errors.babyName = 'You must enter a last name for the baby.';
-		} else {
-			errors.babyName = '';
-		}
-		//validate parent name
-		if (fields.parent1.trim().length < 1) {
-			valid = false;
-			errors.parent1 = 'You must enter your first name.';
-		} else {
-			errors.parent1 = '';
-		}
-
-		//validate gender
-		if (fields.gender === '') {
-			valid = false;
-			errors.gender = 'You must select a gender.';
-		} else {
-			errors.gender = '';
-		}
-
-		//validate weight
-		if (fields.weight) {
-			if (fields.lbs === null || fields.oz === null) {
-				valid = false;
-				errors.weight = 'You must enter both lbs and oz.';
-			} else if (fields.lbs > 20 || fields.lbs < 1) {
-				valid = false;
-				errors.weight = 'You must enter both lbs and oz.';
-			} else {
-				errors.weight = '';
-			}
-		}
+		valid = validation.valid;
+		errors = validation.errors;
+		fields = validation.fields;
 
 		if (valid) {
 			let slug = (Math.random() + 1).toString(36).substring(7);
@@ -75,6 +36,7 @@
 			if (error) {
 				return console.error(error);
 			}
+			console.log(data[0].uuid);
 			url = `/${slug}`;
 			submitted = true;
 		}
@@ -84,12 +46,12 @@
 <Modal content="ReadyToShare" isOpen={submitted} {url} />
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
 	<h2 class="text-5xl">Tell us about your new baby.</h2>
-	<Input name="babyName" {fields} {errors} label="Baby's First Name" />
-	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name*" />
-	<Input name="babyLast" {fields} {errors} label="Baby's Last Name" />
+	<Input name="babyName" {fields} {errors} label="Baby's First Name*" />
+	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name" />
+	<Input name="babyLast" {fields} {errors} label="Baby's Last Name*" />
 	<div>
 		<div class="flex mt-2">
-			<label class="label" for="gender">Baby's gender</label>
+			<label class="label" for="gender">Baby's gender*</label>
 			<div class="btn-group">
 				<input
 					type="radio"
@@ -115,7 +77,7 @@
 	<div>
 		<fieldset class="flex">
 			<label class="label flex justify-start"
-				>Show birth weight?*<input
+				>Show birth weight?<input
 					class="checkbox checkbox-secondary ml-1"
 					type="checkbox"
 					bind:checked={fields.weight}
@@ -150,8 +112,8 @@
 			<div class="errors">{errors.weight}</div>
 		</fieldset>
 	</div>
-	<Input name="parent1" {fields} {errors} label="Your First Name" />
-	<Input name="parent2" {fields} {errors} label="Your Partner's First Name*" />
+	<Input name="parent1" {fields} {errors} label="Your First Name*" />
+	<Input name="parent2" {fields} {errors} label="Your Partner's First Name" />
 	<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea
