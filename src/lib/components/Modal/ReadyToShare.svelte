@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ShareButtons from '$lib/components/ShareButtons/index.svelte';
+	import ShareButtons from '$lib/components/ShareButtons/Share.svelte';
 	import { babyDetails } from '$lib/stores/stores';
 	export let url: string;
 </script>

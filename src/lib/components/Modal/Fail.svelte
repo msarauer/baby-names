@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { babyDetails } from '$lib/stores/stores';
-	import ShareButtons from '$lib/components/ShareButtons/index.svelte';
+	import ShareButtons from '$lib/components/ShareButtons/Share.svelte';
 </script>
 
 <div class="text-center">
