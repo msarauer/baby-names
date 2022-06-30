@@ -3682,10 +3682,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte-adapter-azure-swa@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/svelte-adapter-azure-swa/-/svelte-adapter-azure-swa-0.6.1.tgz#1856263e294c61c693ebbbfc2f0aeb1405fa1209"
-  integrity sha512-RFy2zblawSKG2Jz86j1IcZhiOWznhh82egmhZPkvXw9L9SjdJXbDhkOiuvTexq6Sf+4pWtaQWLdQ2gymj7OFnA==
+svelte-adapter-azure-swa@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/svelte-adapter-azure-swa/-/svelte-adapter-azure-swa-0.7.0.tgz#d3b24723a75663db6e07be4d714969acb4f8ab7c"
+  integrity sha512-n0nzmLk6juVrz4in+DT7aI0crSTCgiLwUK3m1X2UkJyK/+cgwgzBQYqmoF3qaGhq97FFTce6jjM4zEGeO/CXdg==
   dependencies:
     esbuild "^0.13.4"
 
