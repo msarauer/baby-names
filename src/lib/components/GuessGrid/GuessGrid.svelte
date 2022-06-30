@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Row from './Row.svelte';
 	import { answerKey, gameOver, openModal } from '../../stores/stores';
-	import Balloons from '$lib/components/Balloons/index.svelte';
+	import Balloons from '$lib/components/Balloons/Balloons.svelte';
 	import Modal from '$lib/components/Modal/Modal.svelte';
 
 	export let delay: number;

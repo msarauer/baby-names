@@ -29,12 +29,13 @@
 </script>
 
 <script lang="ts">
-	import GuessGrid from '$lib/components/GuessGrid/index.svelte';
-	import Keyboard from '$lib/components/Keyboard/index.svelte';
+	import GuessGrid from '$lib/components/GuessGrid/GuessGrid.svelte';
+	import Keyboard from '$lib/components/Keyboard/Keyboard.svelte';
 
 	let delay = 600;
 </script>
 
+$lib/components/GuessGrid/GuessGrid.svelte
 <div class="screen">
 	<div class="game-area">
 		<GuessGrid {delay} />

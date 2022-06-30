@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BabyNameInput from '$lib/components/BabyNameInput/index.svelte';
+	import BabyNameInput from '$lib/components/BabyNameInput/Form.svelte';
 </script>
 
 <div class="">
