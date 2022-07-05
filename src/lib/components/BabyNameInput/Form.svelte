@@ -24,7 +24,7 @@
 		valid = true;
 
 		const validation = validate(fields, errors);
-		const user_id = user.id;
+		const user_id = $user.id;
 		valid = validation.valid;
 		errors = validation.errors;
 		fields = validation.fields;
@@ -35,7 +35,7 @@
 			if (error) {
 				return console.error(error);
 			}
-			console.log(data[0].uuid);
+			console.log(data[0]);
 			url = `/${slug}`;
 			submitted = true;
 		}

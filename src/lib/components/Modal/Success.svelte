@@ -29,9 +29,9 @@
 <div class="text-center">
 	<h3 class="text-4xl bg-primary rounded-3xl py-4">You got it!</h3>
 	<p class="py-4 text-2xl">
-		<span class="text-4xl text-accent capitalize">{$babyDetails.parent1}</span>
-		{#if $babyDetails.parent2}
-			and <span class="text-4xl text-accent">{$babyDetails.parent2}</span> are
+		<span class="text-4xl text-accent capitalize">{$babyDetails.first_name}</span>
+		{#if $babyDetails.partners_name}
+			and <span class="text-4xl text-accent">{$babyDetails.partners_name}</span> are
 		{:else}
 			is
 		{/if}
@@ -50,6 +50,6 @@
 	</p>
 
 	<div class="modal-action">
-		<ShareButtons parent1={$babyDetails.parent1} parent2={$babyDetails.parent2} />
+		<ShareButtons first_name={$babyDetails.first_name} partners_name={$babyDetails.partners_name} />
 	</div>
 </div>

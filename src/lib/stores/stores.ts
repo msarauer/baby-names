@@ -18,8 +18,8 @@ export const babyDetails = writable({
 	message: '',
 	otherNames: null,
 	oz: null,
-	parent1: '',
-	parent2: '',
+	first_name: '',
+	partners_name: '',
 	weight: false
 });
 
