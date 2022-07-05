@@ -3,20 +3,19 @@
 	import Modal from '../Modal/Modal.svelte';
 	import Input from './Input.svelte';
 	import validate from './Validation';
+	import { user } from '$lib/stores/authStore';
 
 	let fields = {
 		babyName: '',
 		babyMiddle: '',
 		babyLast: '',
-		parent1: '',
-		parent2: '',
 		gender: '',
 		weight: false,
 		lbs: null,
 		oz: null,
 		message: ''
 	};
-	let errors = { babyName: '', babyLast: '', parent1: '', gender: '', weight: '' };
+	let errors = { babyName: '', babyLast: '', gender: '', weight: '' };
 	let valid = false;
 	let submitted: boolean = false;
 	let url: string;
@@ -25,14 +24,14 @@
 		valid = true;
 
 		const validation = validate(fields, errors);
-
+		const user_id = user.id;
 		valid = validation.valid;
 		errors = validation.errors;
 		fields = validation.fields;
 
 		if (valid) {
 			let slug = (Math.random() + 1).toString(36).substring(7);
-			const { data, error } = await supabase.from('babies').insert([{ ...fields, slug }]);
+			const { data, error } = await supabase.from('babies').insert([{ ...fields, slug, user_id }]);
 			if (error) {
 				return console.error(error);
 			}
@@ -44,8 +43,8 @@
 </script>
 
 <Modal content="ReadyToShare" isOpen={submitted} {url} />
+<h2 class="text-5xl text-center">Tell us about your new baby.</h2>
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
-	<h2 class="text-5xl">Tell us about your new baby.</h2>
 	<Input name="babyName" {fields} {errors} label="Baby's First Name*" />
 	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name" />
 	<Input name="babyLast" {fields} {errors} label="Baby's Last Name*" />
@@ -112,8 +111,6 @@
 			<div class="errors">{errors.weight}</div>
 		</fieldset>
 	</div>
-	<Input name="parent1" {fields} {errors} label="Your First Name*" />
-	<Input name="parent2" {fields} {errors} label="Your Partner's First Name" />
 	<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>
 			<textarea

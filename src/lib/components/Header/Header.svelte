@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { gameOver, openModal } from '$lib/stores/stores';
 	import GiChest from 'svelte-icons/gi/GiChest.svelte';
+	import { user } from '$lib/stores/authStore';
+	import { supabase } from '../../../supabase.js';
+
+	const handleLogout = () => {
+		supabase.auth.signOut();
+	};
 </script>
 
 <header>
@@ -37,6 +43,9 @@
 		</div>
 
 		<div class="navbar-end">
+			{#if $user}
+				<button class="btn btn-ghost z-10" on:click={handleLogout}> Logout </button>
+			{/if}
 			{#if $gameOver}
 				<button
 					class="btn btn-ghost btn-circle z-10"

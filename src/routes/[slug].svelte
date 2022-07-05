@@ -8,7 +8,7 @@
 		const { data, error } = await supabase
 			.from('babies')
 			.select(
-				'babyName, babyMiddle, babyLast, birthday, gender, lbs, message, otherNames, oz, parent1, parent2, weight'
+				'babyName, babyMiddle, babyLast, birthday, gender, lbs, message, otherNames, oz, weight'
 			)
 			.eq('slug', slug);
 		if (error) {
@@ -35,7 +35,6 @@
 	let delay = 600;
 </script>
 
-$lib/components/GuessGrid/GuessGrid.svelte
 <div class="screen">
 	<div class="game-area">
 		<GuessGrid {delay} />
