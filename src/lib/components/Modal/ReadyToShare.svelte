@@ -13,6 +13,6 @@
 		{/if}
 	</p>
 	<div class="modal-action">
-		<ShareButtons parent1={$babyDetails.parent1} parent2={$babyDetails.parent2} />
+		<ShareButtons first_name={$babyDetails.first_name} partners_name={$babyDetails.partners_name} />
 	</div>
 </div>

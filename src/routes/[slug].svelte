@@ -8,15 +8,29 @@
 		const { data, error } = await supabase
 			.from('babies')
 			.select(
-				'babyName, babyMiddle, babyLast, birthday, gender, lbs, message, otherNames, oz, parent1, parent2, weight'
+				'babyName, babyMiddle, babyLast, birthday, gender, lbs, message, oz, weight, profiles ( first_name, partners_name )'
 			)
 			.eq('slug', slug);
 		if (error) {
+			console.log(error);
 			return {
 				error: new Error('Could not find the game')
 			};
 		}
-		const result = data[0];
+		console.log('here', data[0]);
+		const result = {
+			babyName: data[0].babyName,
+			babyMiddle: data[0].babyMiddle,
+			babyLast: data[0].babyLast,
+			birthday: data[0].birthday,
+			gender: data[0].gender,
+			lbs: data[0].lbs,
+			message: data[0].message,
+			oz: data[0].oz,
+			weight: data[0].weight,
+			first_name: data[0].profiles.first_name,
+			partners_name: data[0].profiles.partners_name
+		};
 
 		answerKey.set(createAnswerKey(result.babyName.toLowerCase()));
 		babyDetails.set({ ...result });
@@ -35,7 +49,6 @@
 	let delay = 600;
 </script>
 
-$lib/components/GuessGrid/GuessGrid.svelte
 <div class="screen">
 	<div class="game-area">
 		<GuessGrid {delay} />

@@ -17,13 +17,6 @@ const validate = (fields, errors) => {
 	} else {
 		errors.babyLast = '';
 	}
-	//validate parent name
-	if (fields.parent1.trim().length < 1) {
-		valid = false;
-		errors.parent1 = 'You must enter your first name.';
-	} else {
-		errors.parent1 = '';
-	}
 
 	//validate gender
 	if (fields.gender === '') {

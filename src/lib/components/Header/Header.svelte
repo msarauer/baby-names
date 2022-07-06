@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { gameOver, openModal } from '$lib/stores/stores';
 	import GiChest from 'svelte-icons/gi/GiChest.svelte';
+	import { user, newUser } from '$lib/stores/authStore';
+	import { supabase } from '../../../supabase.js';
+
+	const handleLogout = () => {
+		supabase.auth.signOut();
+	};
 </script>
 
 <header>
@@ -35,9 +41,30 @@
 		<div class="navbar-center">
 			<h1 class="text-3xl">BABIDLE</h1>
 		</div>
-
 		<div class="navbar-end">
-			{#if $gameOver}
+			{#if typeof window != 'undefined' && window.location.pathname === '/'}
+				{#if $user}
+					<button class="btn btn-ghost z-10" on:click={handleLogout}> Logout </button>
+				{:else if $newUser}
+					<button
+						class="btn btn-ghost z-10"
+						on:click={() => {
+							$newUser = false;
+						}}
+					>
+						Login
+					</button>
+				{:else}
+					<button
+						class="btn btn-ghost z-10"
+						on:click={() => {
+							$newUser = true;
+						}}
+					>
+						Sign up
+					</button>
+				{/if}
+			{:else if $gameOver}
 				<button
 					class="btn btn-ghost btn-circle z-10"
 					on:click={() => {

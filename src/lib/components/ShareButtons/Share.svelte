@@ -2,13 +2,13 @@
 	import FaShareAlt from 'svelte-icons/fa/FaShareAlt.svelte';
 	import MdErrorOutline from 'svelte-icons/md/MdErrorOutline.svelte';
 
-	export let parent1 = '';
-	export let parent2 = '';
+	export let first_name = '';
+	export let partners_name = '';
 	export let url = '';
 
-	let text = parent2
-		? `${parent1} and ${parent2}'s Babidle baby announcement`
-		: `${parent1}'s Babidle baby announcement`;
+	let text = partners_name
+		? `${first_name} and ${partners_name}'s Babidle baby announcement`
+		: `${first_name}'s Babidle baby announcement`;
 
 	let errorMessage = false;
 
