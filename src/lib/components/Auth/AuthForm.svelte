@@ -15,7 +15,7 @@
 		<div>
 			<label class="label" for="email">Email</label>
 			<input
-				class="w-full bg-white px-2 rounded-none border-2 border-secondary bg-transparent"
+				class="w-full bg-white px-2 rounded-none border-2 border-secondary"
 				name="email"
 				type="email"
 				bind:value={email}
@@ -24,7 +24,7 @@
 		<div>
 			<label class="label" for="password">Password</label>
 			<input
-				class="w-full bg-white px-2 rounded-none border-2 border-secondary bg-transparent"
+				class="w-full bg-white px-2 rounded-none border-2 border-secondary"
 				name="password"
 				type="password"
 				bind:value={password}
