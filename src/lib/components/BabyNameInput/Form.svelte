@@ -43,7 +43,8 @@
 </script>
 
 <Modal content="ReadyToShare" isOpen={submitted} {url} />
-<h2 class="text-5xl text-center">Tell us about your new baby.</h2>
+
+<h2 class="text-2xl">Tell us about your new baby.</h2>
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
 	<Input name="babyName" {fields} {errors} label="Baby's First Name*" />
 	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name" />
@@ -57,7 +58,7 @@
 					name="gender"
 					value="Boy"
 					data-title="Boy"
-					class="btn"
+					class="btn btn-outline text-xl"
 					bind:group={fields.gender}
 					checked
 				/>
@@ -66,7 +67,7 @@
 					name="gender"
 					value="Girl"
 					data-title="Girl"
-					class="btn"
+					class="btn btn-outline text-xl"
 					bind:group={fields.gender}
 				/>
 			</div>

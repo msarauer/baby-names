@@ -14,12 +14,16 @@
 			console.log('logged in');
 		}
 	});
+
+	let showBabyInput = false;
 </script>
 
-<div class="">
+<div class="max-w-xl m-auto">
 	{#if $user}
-		<Profile />
-		<BabyNameInput />
+		<Profile bind:showBabyInput />
+		{#if showBabyInput}
+			<BabyNameInput />
+		{/if}
 	{:else}
 		<AuthEntry />
 	{/if}

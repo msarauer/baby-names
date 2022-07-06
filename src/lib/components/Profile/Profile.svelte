@@ -4,6 +4,7 @@
 
 	let loading = true;
 	let first_name = null;
+	export let showBabyInput;
 	let partners_name = null;
 	let avatar_url = null;
 
@@ -22,6 +23,7 @@
 
 			if (data) {
 				first_name = data.first_name;
+				if (data.first_name) showBabyInput = true;
 				avatar_url = data.avatar_url;
 				partners_name = data.partners_name;
 			}
@@ -45,23 +47,12 @@
 				updated_at: new Date()
 			};
 
-			let { error } = await supabase.from('profiles').upsert(updates, {
-				returning: 'minimal' // Don't return the value after inserting
-			});
+			let { data, error } = await supabase.from('profiles').upsert(updates);
 
 			if (error) throw error;
-		} catch (error) {
-			alert(error.message);
-		} finally {
-			loading = false;
-		}
-	}
 
-	async function signOut() {
-		try {
-			loading = true;
-			let { error } = await supabase.auth.signOut();
-			if (error) throw error;
+			if (data[0].first_name) showBabyInput = true;
+			else showBabyInput = false;
 		} catch (error) {
 			alert(error.message);
 		} finally {
@@ -73,34 +64,43 @@
 <h2 class="text-center text-5xl">
 	Welcome{#if first_name}, {first_name}{/if}
 </h2>
-<form
-	use:getProfile
-	class="form-control text-2xl max-w-xl m-auto"
-	on:submit|preventDefault={updateProfile}
->
+<p class=" text-3xl">First, please tell us a bit about yourself.</p>
+<form use:getProfile class="form-control text-2xl " on:submit|preventDefault={updateProfile}>
 	<div>
-		<label for="email">Email</label>
-		<input id="email" type="text" value={$user.email} disabled />
-	</div>
-	<div>
-		<label for="first_name">First Name</label>
-		<input id="first_name" type="text" bind:value={first_name} />
-	</div>
-	<div>
-		<label for="partners_name">Your Partner's First Name</label>
-		<input id="partners_name" type="text" bind:value={partners_name} />
-	</div>
-
-	<div>
+		<label class="label" for="email">Email</label>
 		<input
-			type="submit"
-			class="button block primary"
-			value={loading ? 'Loading ...' : 'Update'}
-			disabled={loading}
+			class="w-full bg-white px-2 rounded-none border-2 border-secondary disabled:bg-slate-200 disabled:border-primary"
+			id="email"
+			type="text"
+			value={$user.email}
+			disabled
+		/>
+	</div>
+	<div>
+		<label class="label" for="first_name">First Name</label>
+		<input
+			class="w-full bg-white px-2 rounded-none border-2 border-secondary"
+			id="first_name"
+			type="text"
+			bind:value={first_name}
+		/>
+	</div>
+	<div>
+		<label class="label" for="partners_name">Your Partner's First Name</label>
+		<input
+			class="w-full bg-white px-2 rounded-none border-2 border-secondary"
+			id="partners_name"
+			type="text"
+			bind:value={partners_name}
 		/>
 	</div>
 
-	<div>
-		<button class="button block" on:click={signOut} disabled={loading}> Sign Out </button>
+	<div class="mt-2">
+		<input
+			type="submit"
+			class="btn btn-outline block text-xl"
+			value={loading ? 'Loading ...' : 'Update'}
+			disabled={loading}
+		/>
 	</div>
 </form>
