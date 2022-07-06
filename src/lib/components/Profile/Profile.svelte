@@ -64,6 +64,7 @@
 <h2 class="text-center text-5xl">
 	Welcome{#if first_name}, {first_name}{/if}
 </h2>
+
 <p class=" text-3xl">First, please tell us a bit about yourself.</p>
 <form use:getProfile class="form-control text-2xl " on:submit|preventDefault={updateProfile}>
 	<div>

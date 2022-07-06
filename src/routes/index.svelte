@@ -22,6 +22,7 @@
 	{#if $user}
 		<Profile bind:showBabyInput />
 		{#if showBabyInput}
+			<div class="divider" />
 			<BabyNameInput />
 		{/if}
 	{:else}
