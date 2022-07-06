@@ -44,7 +44,7 @@
 
 <Modal content="ReadyToShare" isOpen={submitted} {url} />
 
-<h2 class="text-2xl">Tell us about your new baby.</h2>
+<h2 class="text-3xl mt-5">Tell us about your new baby.</h2>
 <form class="form-control text-2xl max-w-xl m-auto" on:submit|preventDefault={handleSubmit}>
 	<Input name="babyName" {fields} {errors} label="Baby's First Name*" />
 	<Input name="babyMiddle" {fields} {errors} label="Baby's Middle Name" />
@@ -58,7 +58,7 @@
 					name="gender"
 					value="Boy"
 					data-title="Boy"
-					class="btn btn-outline text-xl"
+					class="btn btn-outline bg-white text-xl"
 					bind:group={fields.gender}
 					checked
 				/>
@@ -67,7 +67,7 @@
 					name="gender"
 					value="Girl"
 					data-title="Girl"
-					class="btn btn-outline text-xl"
+					class="btn btn-outline bg-white text-xl"
 					bind:group={fields.gender}
 				/>
 			</div>
@@ -78,7 +78,7 @@
 		<fieldset class="flex">
 			<label class="label flex justify-start"
 				>Show birth weight?<input
-					class="checkbox checkbox-secondary ml-1"
+					class="checkbox checkbox-secondary ml-1 border-2 bg-white"
 					type="checkbox"
 					bind:checked={fields.weight}
 				/></label
@@ -91,7 +91,7 @@
 						type="number"
 						min="1"
 						max="20"
-						class="input max-w-[80px] mr-1"
+						class="input max-w-[80px] mr-1 border-2 bg-white"
 						bind:value={fields.lbs}
 					/>
 					lbs
@@ -103,7 +103,7 @@
 						type="number"
 						min="0"
 						max="15.99"
-						class="input max-w-[80px] mr-1"
+						class="input max-w-[80px] mr-1 border-2 bg-white"
 						bind:value={fields.oz}
 					/>
 					oz

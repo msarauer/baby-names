@@ -14,7 +14,7 @@
 <div class="">
 	<label class="label pb-0" for={name}>{label}</label>
 	<input
-		class="w-full px-2 rounded-none border-2 border-secondary bg-transparent"
+		class="w-full px-2 rounded-none border-2 border-secondary bg-white"
 		{name}
 		bind:value={fields[name]}
 	/>

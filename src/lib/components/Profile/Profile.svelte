@@ -98,7 +98,7 @@
 	<div class="mt-2">
 		<input
 			type="submit"
-			class="btn btn-outline block text-xl"
+			class="btn btn-outline bg-white  text-xl"
 			value={loading ? 'Loading ...' : 'Update'}
 			disabled={loading}
 		/>
