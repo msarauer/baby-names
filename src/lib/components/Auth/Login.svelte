@@ -24,4 +24,12 @@
 	};
 </script>
 
-<AuthForm {handleSubmit} bind:loading bind:email bind:password buttonText="Log in" />
+<AuthForm
+	{handleSubmit}
+	bind:loading
+	bind:email
+	bind:password
+	buttonText="Log in"
+	switchMessage="New user?"
+	switchButton="Signup"
+/>

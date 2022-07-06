@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { supabase } from '../../../supabase.js';
 	import AuthForm from './AuthForm.svelte';
+	import { newUser } from '$lib/stores/authStore';
 
 	let loading = false;
 	let email: string;
@@ -24,4 +25,12 @@
 	};
 </script>
 
-<AuthForm {handleSubmit} bind:loading bind:email bind:password buttonText="Create a free account" />
+<AuthForm
+	{handleSubmit}
+	switchMessage="Already have an account?"
+	switchButton="Login"
+	bind:loading
+	bind:email
+	bind:password
+	buttonText="Create a free account"
+/>
