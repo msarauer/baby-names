@@ -3,12 +3,11 @@
 	import { answerKey, gameOver, openModal } from '../../stores/stores';
 	import Balloons from '$lib/components/Balloons/Balloons.svelte';
 	import Modal from '$lib/components/Modal/Modal.svelte';
+	import { page } from '$app/stores';
 
 	export let delay: number;
 
 	let showBalloons = false;
-
-	let loser = false;
 
 	const handleWin = () => {
 		setTimeout(() => {
@@ -33,11 +32,9 @@
 		<Row {row} {delay} on:win={handleWin} on:lose={handleLose} />
 	{/each}
 
-	{#if typeof window != 'undefined'}
-		<Modal content="Success" isOpen={$openModal.success} url={window.location.href} />
-	{/if}
+	<Modal content="Success" isOpen={$openModal.success} url={$page.url.href} />
 
-	<Modal content="Fail" isOpen={$openModal.fail} />
+	<Modal content="Fail" isOpen={$openModal.fail} url={$page.url.href} />
 </div>
 
 <style>

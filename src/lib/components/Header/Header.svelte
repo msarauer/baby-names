@@ -3,6 +3,7 @@
 	import GiChest from 'svelte-icons/gi/GiChest.svelte';
 	import { user, newUser } from '$lib/stores/authStore';
 	import { supabase } from '../../../supabase.js';
+	import { page } from '$app/stores';
 
 	const handleLogout = () => {
 		supabase.auth.signOut();
@@ -42,7 +43,7 @@
 			<h1 class="text-3xl">BABIDLE</h1>
 		</div>
 		<div class="navbar-end">
-			{#if typeof window != 'undefined' && window.location.pathname === '/'}
+			{#if $page.url.pathname === '/'}
 				{#if $user}
 					<button class="btn btn-ghost z-10" on:click={handleLogout}> Logout </button>
 				{:else if $newUser}

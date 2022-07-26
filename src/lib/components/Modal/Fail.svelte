@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { babyDetails } from '$lib/stores/stores';
 	import ShareButtons from '$lib/components/ShareButtons/Share.svelte';
+
+	export let url = '';
 </script>
 
 <div class="text-center">
@@ -27,6 +29,10 @@
 	</p>
 
 	<div class="modal-action">
-		<ShareButtons first_name={$babyDetails.first_name} partners_name={$babyDetails.partners_name} />
+		<ShareButtons
+			first_name={$babyDetails.first_name}
+			partners_name={$babyDetails.partners_name}
+			{url}
+		/>
 	</div>
 </div>
