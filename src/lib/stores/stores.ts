@@ -2,9 +2,12 @@ import { writable } from 'svelte/store';
 
 export const guessHistory = writable([{ guess: '', complete: false }]);
 
+// This is an object storing the babies name and the number of guesses the player will get
 export const answerKey = writable({ answer: '', guesses: 0 });
 
 export const gameOver = writable(false);
+
+export const tooEasy = writable(false);
 
 export const openModal = writable({ success: false, fail: false });
 
