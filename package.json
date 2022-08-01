@@ -42,6 +42,7 @@
 		"daisyui": "^2.15.2",
 		"dotenv": "^16.0.0",
 		"install": "^0.13.0",
+		"luxon": "^3.0.1",
 		"npm": "^8.9.0",
 		"svelte-adapter-azure-swa": "^0.7.0",
 		"svelte-confetti": "^1.2.0",

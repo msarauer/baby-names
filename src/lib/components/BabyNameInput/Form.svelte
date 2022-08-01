@@ -13,7 +13,8 @@
 		weight: false,
 		lbs: null,
 		oz: null,
-		message: ''
+		message: '',
+		birthday: null
 	};
 	let errors = { babyName: '', babyLast: '', gender: '', weight: '' };
 	let valid = false;
@@ -111,6 +112,18 @@
 				</div>
 				<div class="errors">{errors.weight}</div>
 			</fieldset>
+		</div>
+		<div>
+			<label
+				>Please select a birthday <input
+					class="px-2 rounded-none border-2 border-secondary bg-white"
+					type="date"
+					name="birthday"
+					id="datePickerId"
+					bind:value={fields.birthday}
+					max={new Date().toLocaleDateString('en-ca')}
+				/></label
+			>
 		</div>
 		<!-- <div class="">
 			<label class="label" for="message">Please enter a message for your friends (optional):</label>

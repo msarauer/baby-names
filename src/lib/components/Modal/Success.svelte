@@ -2,8 +2,12 @@
 	import { babyDetails } from '$lib/stores/stores';
 	import ShareButtons from '$lib/components/ShareButtons/Share.svelte';
 	import { Confetti } from 'svelte-confetti';
+	import { DateTime } from 'luxon';
 
 	export let url = '';
+
+	let date = DateTime.fromSQL($babyDetails.birthday);
+	let data = date.toLocaleString(DateTime.DATE_FULL);
 </script>
 
 <div
@@ -46,7 +50,7 @@
 		</span>
 	</p>
 	<p class="py-4 text-2xl">
-		Born May 1, 2022{$babyDetails.weight
+		Born {data}{$babyDetails.weight
 			? ' and weighing ' + $babyDetails.lbs + ' lbs - ' + $babyDetails.oz + ' oz'
 			: ''}.
 	</p>
