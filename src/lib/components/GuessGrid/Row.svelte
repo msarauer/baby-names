@@ -2,7 +2,7 @@
 	import LetterBox from './LetterBox.svelte';
 	import { guessHistory, answerKey, letters, tooEasy } from '../../stores/stores';
 	import { checkGuess } from '$lib/functions/checkGuess';
-
+	import IoMdBulb from 'svelte-icons/io/IoMdBulb.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
@@ -15,11 +15,12 @@
 	const giveHint = () => {
 		showHintButton = false;
 		if (row === 0) {
-			clue = { i: 0, letter: $answerKey.answer[0] };
+			clue = { i: 0, letter: $answerKey.answer[0].toUpperCase() };
 		} else {
+			//find the first letter that is not completely correct
 			for (let i = 0; i < $answerKey.answer.length; i++) {
 				if ($letters[$answerKey.answer[i]] < 3) {
-					clue = { i, letter: $answerKey.answer[i] };
+					clue = { i, letter: $answerKey.answer[i].toUpperCase() };
 					break;
 				}
 			}
@@ -27,6 +28,11 @@
 	};
 
 	$: {
+		if ($guessHistory[row]?.guess.length > 0) {
+			showHintButton = false;
+		} else {
+			showHintButton = true;
+		}
 		if ($guessHistory[row]?.complete) {
 			const guessKey = $guessHistory[row].guess;
 			const answer = $answerKey.answer;
@@ -69,14 +75,20 @@
 </script>
 
 <div class="guess-row" style="--num-chars:{$answerKey.answer.length}">
-	<button
-		on:click={() => {
-			giveHint();
-		}}
-		class={row === $guessHistory.length - 1 && showHintButton && !$tooEasy
-			? 'visible'
-			: 'invisible'}>Hint?</button
-	>
+	<div class="flex items-center">
+		<button
+			on:click={() => {
+				giveHint();
+			}}
+			class={row === $guessHistory.length - 1 && showHintButton && !$tooEasy
+				? 'visible rounded-full py-2 bg-accent'
+				: 'invisible '}
+		>
+			<span class="block text-accent-content" style="width: 24px; height: 24px">
+				<IoMdBulb />
+			</span>
+		</button>
+	</div>
 
 	{#each $answerKey.answer as letter, column}
 		<LetterBox
