@@ -10,10 +10,11 @@
 	export let delay: number;
 	export let resultKey: ResultKey = { key: '', correct: false };
 	export let showHintButton = true;
+	let hintDone = false;
 	let clue = {};
 
 	const giveHint = () => {
-		showHintButton = false;
+		hintDone = true;
 		if (row === 0) {
 			clue = { i: 0, letter: $answerKey.answer[0].toUpperCase() };
 		} else {
@@ -80,7 +81,7 @@
 			on:click={() => {
 				giveHint();
 			}}
-			class={row === $guessHistory.length - 1 && showHintButton && !$tooEasy
+			class={row === $guessHistory.length - 1 && showHintButton && !$tooEasy && !hintDone
 				? 'visible rounded-full py-2 bg-accent'
 				: 'invisible '}
 		>
