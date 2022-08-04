@@ -16,6 +16,7 @@
 	<input
 		class="w-full px-2 rounded-none border-2 border-secondary bg-white"
 		{name}
+		pattern="[a-zA-Z]+"
 		bind:value={fields[name]}
 	/>
 	{#if errors[name]}
